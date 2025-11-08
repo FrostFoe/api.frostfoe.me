@@ -2,8 +2,6 @@ import { Header } from "../header";
 import { EnhancedSidebar } from "../components/enhanced-sidebar";
 import { Breadcrumb } from "../components/breadcrumb";
 import { GuidesMainContent } from "@/components/guides/guides-main-content";
-import { GuidesFooter } from "@/components/guides/guides-footer";
-
 
 export default function GuidesPage() {
   return (
@@ -23,7 +21,6 @@ export default function GuidesPage() {
         <main className="p-4 sm:p-6 md:p-8">
           <div className="max-w-5xl mx-auto">
             <GuidesMainContent />
-            <GuidesFooter />
           </div>
         </main>
         <footer className="py-8 border-t border-oa-border">

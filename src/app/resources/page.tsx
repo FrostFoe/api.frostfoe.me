@@ -2,7 +2,6 @@ import { Header } from "../header";
 import { EnhancedSidebar } from "../components/enhanced-sidebar";
 import { Breadcrumb } from "../components/breadcrumb";
 import { ResourcesMainContent } from "@/components/resources/resources-main-content";
-import { ResourcesFooter } from "@/components/resources/resources-footer";
 
 export default function ResourcesPage() {
   return (
@@ -22,7 +21,6 @@ export default function ResourcesPage() {
         <main className="p-4 sm:p-6 md:p-8">
           <div className="max-w-5xl mx-auto">
             <ResourcesMainContent />
-            <ResourcesFooter />
           </div>
         </main>
         <footer className="py-8 border-t border-oa-border">
