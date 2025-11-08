@@ -1,47 +1,108 @@
 import React from "react";
-import Image from "next/image";
-import { ArrowRight } from "lucide-react";
+import { HttpBadge } from "@/app/components/http-badge";
+import { CodeSnippet } from "@/app/components/code-snippet";
 
 export function AgentKitSection() {
+  const nodeJsCode = `const axios = require('axios');
+
+const data = {
+  model: 'frostfoe-5-nano',
+  messages: [
+    {
+      role: 'system',
+      content: 'You are a helpful assistant.'
+    },
+    {
+      role: 'user',
+      content: 'হ্যালো, আপনার নাম কি?'
+    }
+  ]
+};
+
+axios.post('https://api.frostfoe.ai/v1/chat/completions', data, {
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer YOUR_API_KEY'
+  }
+})
+.then(response => {
+  console.log(response.data.choices[0].message.content);
+})
+.catch(error => {
+  console.error('Error:', error);
+});`;
+
+  const responseJson = `{
+  "id": "chatcmpl-123",
+  "object": "chat.completion",
+  "created": 171888649,
+  "model": "frostfoe-5-nano",
+  "choices": [
+    {
+      "index": 0,
+      "message": {
+        "role": "assistant",
+        "content": "আমি ফ্রস্টফয় দ্বারা তৈরি একটি বৃহৎ ভাষা মডেল।"
+      },
+      "finish_reason": "stop"
+    }
+  ],
+  "usage": {
+    "prompt_tokens": 20,
+    "completion_tokens": 15,
+    "total_tokens": 35
+  }
+}`;
+
   return (
-    <section className="mb-16">
-      <h2 className="text-2xl font-semibold text-white mb-6">
-        ফ্রস্টফয় এজেন্টকিট দিয়ে তৈরি করুন
-      </h2>
-      <div className="grid lg:grid-cols-2 gap-6">
+    <section id="chat-api" className="mb-16 scroll-mt-20">
+      <h2 className="text-2xl font-semibold text-white mb-4">চ্যাট এপিআই</h2>
+      <p className="text-oa-text-secondary mb-8">
+        ফ্রস্টফয় মডেলগুলির সাথে কথোপকথনমূলক ইন্টারফেস তৈরি করতে চ্যাট
+        এপিআই ব্যবহার করুন। এটি একটি শক্তিশালী এবং নমনীয় এন্ডপয়েন্ট যা বিভিন্ন
+        ধরণের চ্যাট-ভিত্তিক অ্যাপ্লিকেশন তৈরি করতে পারে।
+      </p>
+
+      <div className="space-y-8">
         <div>
-          <div className="space-y-3 mb-6">
-            <button className="btn w-full text-left btn-secondary">
-              ডিজাইন
-            </button>
-            <button className="btn w-full text-left btn-secondary opacity-50">
-              ডিপ্লয়
-            </button>
-            <button className="btn w-full text-left btn-secondary opacity-50">
-              অপ্টিমাইজ
-            </button>
-          </div>
-          <button className="w-full text-left p-4 rounded-lg bg-oa-bg-light hover:bg-opacity-80">
-            <div className="flex justify-between items-center">
-              <span className="text-oa-text-secondary">
-                <span className="text-white font-medium">ডিজাইন </span>
-                এবং ভার্সন করুন ওয়ার্কফ্লো Agent Builder দিয়ে, অথবা কোডের
-                মাধ্যমে নিয়ন্ত্রণ নিন Frostfy SDK ব্যবহার করে।
-              </span>
-              <ArrowRight className="h-5 w-5 shrink-0 ml-2" />
+          <h3 className="text-lg font-semibold text-white mb-2">
+            একটি চ্যাট সেশন তৈরি করুন
+          </h3>
+          <p className="text-sm text-oa-text-secondary mb-4">
+            একটি নতুন চ্যাট সেশন তৈরি করতে, আপনাকে মডেলের নাম এবং বার্তাগুলির
+            একটি তালিকা পাঠাতে হবে।
+          </p>
+          <div className="card !p-0">
+            <div className="p-4 border-b border-oa-border">
+              <HttpBadge method="POST" endpoint="/v1/chat/completions" />
             </div>
-          </button>
+            <CodeSnippet
+              language="javascript"
+              showLineNumbers={true}
+              code={nodeJsCode}
+            />
+          </div>
         </div>
 
-        <div className="bg-oa-bg-dark rounded-lg border border-oa-border p-2">
-          <Image
-            src="https://cdn.openai.com/API/docs/images/builder-home-visual-dark.png"
-            alt="ফ্রস্টফয় এজেন্ট বিল্ডার ইন্টারফেস"
-            className="rounded-md w-full h-auto"
-            width={1000}
-            height={750}
-            priority
-          />
+        <div>
+          <h3 className="text-lg font-semibold text-white mb-2">
+            উদাহরণ প্রতিক্রিয়া (Response)
+          </h3>
+          <p className="text-sm text-oa-text-secondary mb-4">
+            সফল অনুরোধের পর, এপিআই নিম্নলিখিত ফরম্যাটে একটি প্রতিক্রিয়া দেবে:
+          </p>
+          <div className="card !p-0">
+            <div className="p-4 border-b border-oa-border">
+              <span className="text-sm text-oa-text-secondary">
+                JSON Response Body
+              </span>
+            </div>
+            <CodeSnippet
+              language="json"
+              showLineNumbers={false}
+              code={responseJson}
+            />
+          </div>
         </div>
       </div>
     </section>
