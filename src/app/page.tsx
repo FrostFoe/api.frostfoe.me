@@ -19,7 +19,7 @@ export default function Page() {
 
         <Breadcrumb
           items={[
-            { label: "ঘর", href: "/" },
+            { label: "হোম", href: "/" },
             { label: "ডকুমেন্টেশন", href: "/docs" },
             { label: "ফ্রস্টফয় এপিআই", href: "/docs/api" },
           ]}

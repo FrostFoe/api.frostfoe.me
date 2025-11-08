@@ -32,46 +32,46 @@ interface NavItem {
 const navSections: NavSection[] = [
   {
     id: "getting-started",
-    title: "Getting Started",
+    title: "শুরু করুন",
     icon: Rocket,
     items: [
-      { label: "Introduction", href: "#introduction" },
-      { label: "Installation", href: "#installation" },
-      { label: "Authentication", href: "#authentication" },
-      { label: "Your First Request", href: "#first-request" },
+      { label: "ভূমিকা", href: "#introduction" },
+      { label: "ইনস্টলেশন", href: "#installation" },
+      { label: "অথেন্টিকেশন", href: "#authentication" },
+      { label: "আপনার প্রথম অনুরোধ", href: "#first-request" },
     ],
   },
   {
     id: "api-reference",
-    title: "API Reference",
+    title: "এপিআই রেফারেন্স",
     icon: Book,
     items: [
-      { label: "Chat Completions", href: "#chat-api" },
-      { label: "Hadith API", href: "#hadith-api" },
-      { label: "Quran API", href: "#quran-api" },
-      { label: "Models", href: "#models" },
+      { label: "চ্যাট এপিআই", href: "#chat-api" },
+      { label: "হাদিস এপিআই", href: "#hadith-api" },
+      { label: "কুরআন এপিআই", href: "#quran-api" },
+      { label: "মডেলসমূহ", href: "#models" },
     ],
   },
   {
     id: "guides",
-    title: "Guides",
+    title: "নির্দেশিকা",
     icon: Wrench,
     items: [
-      { label: "Error Handling", href: "#errors" },
-      { label: "Rate Limiting", href: "#rate-limiting" },
-      { label: "Webhooks", href: "#webhooks" },
-      { label: "Best Practices", href: "#best-practices" },
+      { label: "ত্রুটি ব্যবস্থাপনা", href: "#errors" },
+      { label: "রেট লিমিট", href: "#rate-limiting" },
+      { label: "ওয়েবহুক", href: "#webhooks" },
+      { label: "সেরা অনুশীলন", href: "#best-practices" },
     ],
   },
   {
     id: "resources",
-    title: "Resources",
+    title: "রিসোর্স",
     icon: Lightbulb,
     items: [
-      { label: "Examples", href: "#examples" },
-      { label: "SDKs", href: "#sdks" },
-      { label: "FAQ", href: "#faq" },
-      { label: "Support", href: "#support" },
+      { label: "উদাহরণ", href: "#examples" },
+      { label: "এসডিকে", href: "#sdks" },
+      { label: "সাধারণ প্রশ্নাবলী", href: "#faq" },
+      { label: "সহায়তা", href: "#support" },
     ],
   },
 ];
@@ -111,7 +111,7 @@ export function EnhancedSidebar({ isSheet = false }: EnhancedSidebarProps) {
             src="/logo.svg"
             width={24}
             height={24}
-            alt="Frostfy Platform Logo"
+            alt="ফ্রস্টফয় প্ল্যাটফর্ম লোগো"
           />
           <span className="font-semibold text-lg text-white truncate">
             ফ্রস্টফয় ডকস
@@ -193,14 +193,14 @@ export function EnhancedSidebar({ isSheet = false }: EnhancedSidebarProps) {
           className="flex items-center gap-2 px-3 py-2 text-sm text-oa-text-tertiary hover:text-white hover:bg-oa-bg-dark rounded-lg transition-colors"
         >
           <HelpCircle className="w-4 h-4" />
-          সহায়তা
+          সহায়তা
         </Link>
         <Link
           href="#"
           className="flex items-center gap-2 px-3 py-2 text-sm text-oa-text-tertiary hover:text-white hover:bg-oa-bg-dark rounded-lg transition-colors"
         >
           <Github className="w-4 h-4" />
-          GitHub
+          গিটহাব
         </Link>
       </div>
     </aside>

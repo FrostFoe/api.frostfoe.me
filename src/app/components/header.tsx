@@ -21,7 +21,7 @@ export function Header() {
               <SheetTrigger asChild>
                 <Button variant="ghost" size="icon">
                   <Menu className="h-6 w-6" />
-                  <span className="sr-only">Open Menu</span>
+                  <span className="sr-only">মেনু খুলুন</span>
                 </Button>
               </SheetTrigger>
               <SheetContent side="left" className="p-0 w-64 bg-oa-dark border-r-oa-border">
@@ -34,7 +34,7 @@ export function Header() {
               ডকুমেন্টেশন
             </Link>
             <Link href="#" className="main-nav-link">
-              API রেফারেন্স
+              এপিআই রেফারেন্স
             </Link>
           </nav>
         </div>

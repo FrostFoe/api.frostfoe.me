@@ -10,18 +10,18 @@ interface Model {
 
 const MODELS: Model[] = [
   {
-    name: "Frostfy 5",
-    desc: "সবচেয়ে শক্তিশালী জেনারেটিভ মডেল কোডিং ও এজেন্টিক কাজের জন্য",
+    name: "ফ্রস্টফয় ৫",
+    desc: "কোডিং এবং এজেন্টিক কাজের জন্য সবচেয়ে শক্তিশালী জেনারেটিভ মডেল",
     img: "https://cdn.openai.com/API/docs/images/model-page/model-art/gpt-5.jpg",
   },
   {
-    name: "Frostfy 5 Mini",
-    desc: "দ্রুত ও কম খরচের সংস্করণ",
+    name: "ফ্রস্টফয় ৫ মিনি",
+    desc: "দ্রুত এবং কম খরচের সংস্করণ",
     img: "https://cdn.openai.com/API/docs/images/model-page/model-art/gpt-5-mini.jpg",
   },
   {
-    name: "Frostfy 5 Nano",
-    desc: "সবচেয়ে দ্রুত ও হালকা মডেল",
+    name: "ফ্রস্টফয় ৫ ন্যানো",
+    desc: "সবচেয়ে দ্রুত এবং হালকা মডেল",
     img: "https://cdn.openai.com/API/docs/images/model-page/model-art/gpt-5-nano.jpg",
   },
 ];
@@ -48,12 +48,12 @@ export function ModelsSection() {
   return (
     <section id="models" className="mb-16 scroll-mt-20">
       <div className="flex items-center justify-between mb-6">
-        <h2 className="text-lg font-semibold text-white">মডেল ব্রাউজ করো</h2>
+        <h2 className="text-lg font-semibold text-white">মডেল ব্রাউজ করুন</h2>
         <Link
           href="#"
           className="text-sm text-oa-text-tertiary hover:text-white"
         >
-          সব দেখো
+          সব দেখুন
         </Link>
       </div>
 
