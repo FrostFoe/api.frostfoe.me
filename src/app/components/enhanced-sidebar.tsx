@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import {
   Rocket,
   Book,
@@ -16,17 +17,17 @@ import {
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
+interface NavItem {
+  label: string;
+  href: string;
+  active?: boolean;
+}
+
 interface NavSection {
   id: string;
   title: string;
   icon: React.ElementType;
   items: NavItem[];
-}
-
-interface NavItem {
-  label: string;
-  href: string;
-  active?: boolean;
 }
 
 const navSections: NavSection[] = [
@@ -35,10 +36,10 @@ const navSections: NavSection[] = [
     title: "শুরু করুন",
     icon: Rocket,
     items: [
-      { label: "ভূমিকা", href: "#introduction" },
-      { label: "ইনস্টলেশন", href: "#installation" },
-      { label: "অথেন্টিকেশন", href: "#authentication" },
-      { label: "আপনার প্রথম অনুরোধ", href: "#first-request" },
+      { label: "ভূমিকা", href: "/introduction" },
+      { label: "ইনস্টলেশন", href: "/introduction#installation" },
+      { label: "অথেন্টিকেশন", href: "/introduction#authentication" },
+      { label: "আপনার প্রথম অনুরোধ", href: "/introduction#first-request" },
     ],
   },
   {
@@ -46,10 +47,10 @@ const navSections: NavSection[] = [
     title: "এপিআই রেফারেন্স",
     icon: Book,
     items: [
-      { label: "চ্যাট এপিআই", href: "#chat-api" },
-      { label: "হাদিস এপিআই", href: "#hadith-api" },
-      { label: "কুরআন এপিআই", href: "#quran-api" },
-      { label: "মডেলসমূহ", href: "#models" },
+      { label: "চ্যাট এপিআই", href: "/#chat-api" },
+      { label: "হাদিস এপিআই", href: "/#hadith-api" },
+      { label: "কুরআন এপিআই", href: "/#quran-api" },
+      { label: "মডেলসমূহ", href: "/#models" },
     ],
   },
   {
@@ -57,10 +58,10 @@ const navSections: NavSection[] = [
     title: "নির্দেশিকা",
     icon: Wrench,
     items: [
-      { label: "ত্রুটি ব্যবস্থাপনা", href: "#errors" },
-      { label: "রেট লিমিট", href: "#rate-limiting" },
-      { label: "ওয়েবহুক", href: "#webhooks" },
-      { label: "সেরা অনুশীলন", href: "#best-practices" },
+      { label: "ত্রুটি ব্যবস্থাপনা", href: "/#errors" },
+      { label: "রেট লিমিট", href: "/#rate-limiting" },
+      { label: "ওয়েবহুক", href: "/#webhooks" },
+      { label: "সেরা অনুশীলন", href: "/#best-practices" },
     ],
   },
   {
@@ -68,10 +69,10 @@ const navSections: NavSection[] = [
     title: "রিসোর্স",
     icon: Lightbulb,
     items: [
-      { label: "উদাহরণ", href: "#examples" },
-      { label: "এসডিকে", href: "#sdks" },
-      { label: "সাধারণ প্রশ্নাবলী", href: "#faq" },
-      { label: "সহায়তা", href: "#support" },
+      { label: "উদাহরণ", href: "/#examples" },
+      { label: "এসডিকে", href: "/#sdks" },
+      { label: "সাধারণ প্রশ্নাবলী", href: "/#faq" },
+      { label: "সহায়তা", href: "/#support" },
     ],
   },
 ];
@@ -81,6 +82,7 @@ interface EnhancedSidebarProps {
 }
 
 export function EnhancedSidebar({ isSheet = false }: EnhancedSidebarProps) {
+  const pathname = usePathname();
   const [expandedSections, setExpandedSections] = useState<Set<string>>(
     new Set(["getting-started", "api-reference"]),
   );
@@ -95,6 +97,11 @@ export function EnhancedSidebar({ isSheet = false }: EnhancedSidebarProps) {
     setExpandedSections(newExpanded);
   };
 
+  const isActive = (href: string) => {
+    if (href === "/") return pathname === "/";
+    return pathname.startsWith(href);
+  };
+
   return (
     <aside
       className={cn(
@@ -106,7 +113,7 @@ export function EnhancedSidebar({ isSheet = false }: EnhancedSidebarProps) {
     >
       {/* Logo */}
       <div className="h-14 flex items-center px-2 mb-6">
-        <Link href="#" className="flex items-center gap-2">
+        <Link href="/" className="flex items-center gap-2">
           <Image
             src="/logo.svg"
             width={24}
@@ -167,9 +174,19 @@ export function EnhancedSidebar({ isSheet = false }: EnhancedSidebarProps) {
                   <Link
                     key={item.label}
                     href={item.href}
-                    className="flex items-center px-3 py-1.5 text-sm text-oa-text-tertiary hover:text-white hover:bg-oa-bg-dark rounded-md transition-colors"
+                    className={cn(
+                      "flex items-center px-3 py-1.5 text-sm transition-colors",
+                      isActive(item.href)
+                        ? "text-white"
+                        : "text-oa-text-tertiary hover:text-white",
+                    )}
                   >
-                    <span className="inline-block w-1 h-1 rounded-full bg-oa-border mr-2" />
+                    <span
+                      className={cn(
+                        "inline-block w-1 h-1 rounded-full mr-2",
+                        isActive(item.href) ? "bg-white" : "bg-oa-border",
+                      )}
+                    />
                     {item.label}
                   </Link>
                 ))}
