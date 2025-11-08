@@ -1,6 +1,11 @@
 import React from "react";
 import Link from "next/link";
-import { Tabs } from "./tabs";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "@/components/ui/tabs";
 import { CodeSnippet } from "./code-snippet";
 
 export function QuickstartSection() {
@@ -28,16 +33,17 @@ export function QuickstartSection() {
         </div>
 
         {/* Code Example */}
-        <div>
-          <Tabs
-            tabs={[
-              {
-                id: "javascript",
-                label: "JavaScript",
-                content: (
-                  <CodeSnippet
-                    language="javascript"
-                    code={`// একটি র‍্যান্ডম হাদিস পেতে
+        <div className="w-full">
+          <Tabs defaultValue="javascript" className="w-full">
+            <TabsList className="grid w-full grid-cols-3 bg-oa-bg-dark border border-oa-border">
+              <TabsTrigger value="javascript">JavaScript</TabsTrigger>
+              <TabsTrigger value="curl">cURL</TabsTrigger>
+              <TabsTrigger value="python">Python</TabsTrigger>
+            </TabsList>
+            <TabsContent value="javascript">
+              <CodeSnippet
+                language="javascript"
+                code={`// একটি র‍্যান্ডম হাদিস পেতে
 async function getRandomHadith() {
   const response = await fetch('/api/hadith?random=1');
   const data = await response.json();
@@ -54,16 +60,12 @@ async function getSurahAlFatihah() {
 }
 
 getSurahAlFatihah();`}
-                  />
-                ),
-              },
-              {
-                id: "curl",
-                label: "cURL",
-                content: (
-                  <CodeSnippet
-                    language="bash"
-                    code={`# একটি র‍্যান্ডম হাদিস পেতে
+              />
+            </TabsContent>
+            <TabsContent value="curl">
+              <CodeSnippet
+                language="bash"
+                code={`# একটি র‍্যান্ডম হাদিস পেতে
 curl http://localhost:9002/api/hadith?random=1
 
 # নির্দিষ্ট সংখ্যক হাদিস পেতে (যেমন ৫টি)
@@ -74,16 +76,12 @@ curl http://localhost:9002/api/quran?id=1
 
 # একটি র‍্যান্ডম আয়াত পেতে
 curl http://localhost:9002/api/quran?random=1`}
-                  />
-                ),
-              },
-              {
-                id: "python",
-                label: "Python",
-                content: (
-                  <CodeSnippet
-                    language="python"
-                    code={`import requests
+              />
+            </TabsContent>
+            <TabsContent value="python">
+              <CodeSnippet
+                language="python"
+                code={`import requests
 import json
 
 BASE_URL = "http://localhost:9002"
@@ -105,12 +103,9 @@ def get_surah_baqarah():
         print(json.dumps(response.json(), indent=2, ensure_ascii=False))
 
 get_surah_baqarah()`}
-                  />
-                ),
-              },
-            ]}
-            defaultTab="javascript"
-          />
+              />
+            </TabsContent>
+          </Tabs>
         </div>
       </div>
     </section>
