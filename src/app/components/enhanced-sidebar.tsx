@@ -3,11 +3,22 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import {
+  Rocket,
+  Book,
+  Wrench,
+  Lightbulb,
+  ChevronDown,
+  Search,
+  Github,
+  HelpCircle,
+  FileText,
+} from "lucide-react";
 
 interface NavSection {
   id: string;
   title: string;
-  icon?: string;
+  icon: React.ElementType;
   items: NavItem[];
 }
 
@@ -20,7 +31,8 @@ interface NavItem {
 const navSections: NavSection[] = [
   {
     id: "getting-started",
-    title: "🚀 Getting Started",
+    title: "Getting Started",
+    icon: Rocket,
     items: [
       { label: "Introduction", href: "#introduction" },
       { label: "Installation", href: "#installation" },
@@ -30,7 +42,8 @@ const navSections: NavSection[] = [
   },
   {
     id: "api-reference",
-    title: "📖 API Reference",
+    title: "API Reference",
+    icon: Book,
     items: [
       { label: "Chat Completions", href: "#chat-api" },
       { label: "Hadith API", href: "#hadith-api" },
@@ -40,7 +53,8 @@ const navSections: NavSection[] = [
   },
   {
     id: "guides",
-    title: "🔧 Guides",
+    title: "Guides",
+    icon: Wrench,
     items: [
       { label: "Error Handling", href: "#errors" },
       { label: "Rate Limiting", href: "#rate-limiting" },
@@ -50,7 +64,8 @@ const navSections: NavSection[] = [
   },
   {
     id: "resources",
-    title: "💡 Resources",
+    title: "Resources",
+    icon: Lightbulb,
     items: [
       { label: "Examples", href: "#examples" },
       { label: "SDKs", href: "#sdks" },
@@ -62,7 +77,7 @@ const navSections: NavSection[] = [
 
 export function EnhancedSidebar() {
   const [expandedSections, setExpandedSections] = useState<Set<string>>(
-    new Set(["getting-started", "api-reference"])
+    new Set(["getting-started", "api-reference"]),
   );
 
   const toggleSection = (sectionId: string) => {
@@ -98,7 +113,10 @@ export function EnhancedSidebar() {
           type="button"
           className="flex w-full items-center justify-between rounded-lg bg-oa-bg-dark px-3 py-2 text-left text-sm text-oa-text-tertiary border border-oa-border hover:border-oa-text-secondary transition-colors"
         >
-          <span>🔍 অনুসন্ধান</span>
+          <span className="flex items-center gap-2">
+            <Search className="h-4 w-4" />
+            অনুসন্ধান
+          </span>
           <span className="flex items-center gap-1 text-xs">
             <kbd className="px-1.5 py-0.5 rounded border border-oa-border bg-oa-bg-light">
               ⌘
@@ -119,22 +137,15 @@ export function EnhancedSidebar() {
               onClick={() => toggleSection(section.id)}
               className="flex items-center justify-between w-full px-3 py-2 rounded-lg hover:bg-oa-bg-dark transition-colors text-sm font-medium text-oa-text-secondary hover:text-white"
             >
-              <span>{section.title}</span>
-              <svg
+              <span className="flex items-center gap-2">
+                <section.icon className="w-4 h-4" />
+                {section.title}
+              </span>
+              <ChevronDown
                 className={`w-4 h-4 transition-transform ${
-                  expandedSections.has(section.id) ? "rotate-180" : ""
+                  expandedSections.has(section.id) ? "" : "-rotate-90"
                 }`}
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M19 14l-7 7m0 0l-7-7m7 7V3"
-                />
-              </svg>
+              />
             </button>
 
             {/* Section Items */}
@@ -162,19 +173,22 @@ export function EnhancedSidebar() {
           href="#"
           className="flex items-center gap-2 px-3 py-2 text-sm text-oa-text-tertiary hover:text-white hover:bg-oa-bg-dark rounded-lg transition-colors"
         >
-          📝 ব্লগ
+          <FileText className="w-4 h-4" />
+          ব্লগ
         </Link>
         <Link
           href="#"
           className="flex items-center gap-2 px-3 py-2 text-sm text-oa-text-tertiary hover:text-white hover:bg-oa-bg-dark rounded-lg transition-colors"
         >
-          ❓ সহায়তা
+          <HelpCircle className="w-4 h-4" />
+          সহায়তা
         </Link>
         <Link
           href="#"
           className="flex items-center gap-2 px-3 py-2 text-sm text-oa-text-tertiary hover:text-white hover:bg-oa-bg-dark rounded-lg transition-colors"
         >
-          🐙 GitHub
+          <Github className="w-4 h-4" />
+          GitHub
         </Link>
       </div>
     </aside>

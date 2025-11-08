@@ -1,31 +1,36 @@
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
+import {
+  HelpCircle,
+  Users,
+  BookOpen,
+  Server,
+} from "lucide-react";
 
 interface FooterItem {
-  icon: string;
+  icon: React.ElementType;
   title: string;
   desc: string;
 }
 
 const FOOTER_ITEMS: FooterItem[] = [
   {
-    icon: "/icons/help-center.svg",
+    icon: HelpCircle,
     title: "সহায়তা কেন্দ্র",
     desc: "অ্যাকাউন্ট ও বিলিং সংক্রান্ত প্রশ্নাবলি",
   },
   {
-    icon: "/icons/developer-forum.svg",
+    icon: Users,
     title: "ডেভেলপার কমিউনিটি",
     desc: "অন্য ফ্রস্টফয় ডেভেলপারদের সাথে আলোচনা করো",
   },
   {
-    icon: "/icons/cookbook-footer.svg",
+    icon: BookOpen,
     title: "রিসোর্স হাব",
     desc: "উদাহরণ ও কোড স্নিপেট থেকে শেখো",
   },
   {
-    icon: "/icons/status.svg",
+    icon: Server,
     title: "স্ট্যাটাস",
     desc: "ফ্রস্টফয় সার্ভিসের বর্তমান অবস্থা দেখো",
   },
@@ -33,18 +38,9 @@ const FOOTER_ITEMS: FooterItem[] = [
 
 function FooterCard({ item }: { item: FooterItem }) {
   return (
-    <Link
-      href="#"
-      className="card card-hover text-center p-6 group"
-    >
+    <Link href="#" className="card card-hover text-center p-6 group">
       <div className="flex flex-col items-center">
-        <Image
-          src={item.icon}
-          width={24}
-          height={24}
-          alt={item.title}
-          className="mb-2"
-        />
+        <item.icon className="w-6 h-6 mb-2 text-oa-text-secondary group-hover:text-white transition-colors" />
         <div className="font-bold text-white mb-2">{item.title}</div>
         <div className="text-sm text-oa-text-secondary">{item.desc}</div>
       </div>

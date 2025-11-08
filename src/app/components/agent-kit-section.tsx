@@ -1,5 +1,6 @@
 import React from "react";
 import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 
 export function AgentKitSection() {
   return (
@@ -27,12 +28,7 @@ export function AgentKitSection() {
                 ও ভার্সন করো ওয়ার্কফ্লো Agent Builder দিয়ে, অথবা কোডের
                 মাধ্যমে নিয়ন্ত্রণ নাও Frostfy SDK ব্যবহার করে।
               </span>
-              <Image
-                src="/icons/arrow.svg"
-                width={20}
-                height={20}
-                alt="Arrow"
-              />
+              <ArrowRight className="h-5 w-5" />
             </div>
           </button>
         </div>

@@ -1,6 +1,7 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { BookOpen, Users, Search } from "lucide-react";
 
 export function Sidebar() {
   return (
@@ -24,7 +25,10 @@ export function Sidebar() {
           type="button"
           className="flex w-full items-center justify-between rounded-lg bg-oa-bg-dark px-3 py-2 text-left text-sm text-oa-text-tertiary border border-oa-border hover:border-oa-text-secondary"
         >
-          <span>অনুসন্ধান</span>
+          <span className="flex items-center gap-2">
+            <Search className="h-4 w-4" />
+            অনুসন্ধান
+          </span>
           <span className="flex items-center gap-1 text-xs">
             <kbd className="px-1.5 py-0.5 rounded border border-oa-border bg-oa-bg-light">
               ⌘
@@ -38,16 +42,11 @@ export function Sidebar() {
 
       <nav className="mt-6 flex-1 space-y-2 px-2">
         <Link href="#" className="sidebar-link flex items-center gap-2">
-          <Image
-            src="/icons/cookbook.svg"
-            width={20}
-            height={20}
-            alt="Cookbook"
-          />
+          <BookOpen className="h-5 w-5" />
           <span>রিসোর্স গাইড</span>
         </Link>
         <Link href="#" className="sidebar-link flex items-center gap-2">
-          <Image src="/icons/forum.svg" width={20} height={20} alt="Forum" />
+          <Users className="h-5 w-5" />
           <span>কমিউনিটি</span>
         </Link>
       </nav>
