@@ -1,6 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server";
 import fs from "fs/promises";
 import path from "path";
+import { Hadith } from "@/lib/types";
 
 // Function to get the path to the hadith data directory
 const getHadithDataPath = () => {
@@ -15,9 +16,9 @@ const prettyJsonResponse = (data: any, status: number = 200) => {
 };
 
 // Cache hadiths in memory
-let allHadiths: any[] | null = null;
+let allHadiths: Hadith[] | null = null;
 
-async function loadHadiths() {
+async function loadHadiths(): Promise<Hadith[]> {
   if (allHadiths !== null) {
     return allHadiths;
   }
@@ -27,16 +28,18 @@ async function loadHadiths() {
     const files = await fs.readdir(hadithDir);
     const hadithFiles = files.filter((file) => file.endsWith(".json"));
 
-    const loadedHadiths: any[] = [];
+    const loadedHadiths: Hadith[] = [];
     for (const file of hadithFiles) {
       const filePath = path.join(hadithDir, file);
       const fileContent = await fs.readFile(filePath, "utf8");
       if (fileContent) {
-        const hadithData = JSON.parse(fileContent);
+        const hadithData = JSON.parse(fileContent) as Hadith[];
         loadedHadiths.push(...hadithData);
       }
     }
-    allHadiths = loadedHadiths;
+    // Remove duplicates based on id
+    const uniqueHadiths = Array.from(new Map(loadedHadiths.map(h => [h.id, h])).values());
+    allHadiths = uniqueHadiths.sort((a,b) => a.id - b.id);
     return allHadiths;
   } catch (error) {
     if ((error as NodeJS.ErrnoException).code === "ENOENT") {

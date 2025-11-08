@@ -1,6 +1,7 @@
 import { type NextRequest, NextResponse } from "next/server";
 import fs from "fs/promises";
 import path from "path";
+import { Surah, VerseWithSurahInfo } from "@/lib/types";
 
 // Function to get the path to the quran data directory
 const getQuranDataPath = () => {
@@ -15,8 +16,8 @@ const prettyJsonResponse = (data: any, status: number = 200) => {
 };
 
 // Cache data in memory
-let allSurahs: any[] | null = null;
-let allVerses: any[] | null = null;
+let allSurahs: Surah[] | null = null;
+let allVerses: VerseWithSurahInfo[] | null = null;
 
 async function loadQuranData() {
   if (allSurahs !== null && allVerses !== null) {
@@ -28,16 +29,16 @@ async function loadQuranData() {
     const files = await fs.readdir(quranDir);
     const surahFiles = files.filter((file) => file.endsWith(".json"));
 
-    const loadedSurahs: any[] = [];
-    const loadedVerses: any[] = [];
+    const loadedSurahs: Surah[] = [];
+    const loadedVerses: VerseWithSurahInfo[] = [];
 
     for (const file of surahFiles) {
       const filePath = path.join(quranDir, file);
       const fileContent = await fs.readFile(filePath, "utf8");
       if (fileContent) {
-        const surahData = JSON.parse(fileContent);
+        const surahData = JSON.parse(fileContent) as Surah;
         loadedSurahs.push(surahData);
-        const versesWithSurahInfo = surahData.verses.map((verse: any) => ({
+        const versesWithSurahInfo = surahData.verses.map((verse) => ({
           ...verse,
           surah_id: surahData.id,
           surah_name: surahData.name,
