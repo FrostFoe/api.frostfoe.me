@@ -5,7 +5,6 @@ import { AgentKitSection } from "@/components/api-reference/agent-kit-section";
 import { ModelsSection } from "@/components/api-reference/models-section";
 import { HadithApiSection } from "@/components/api-reference/hadith-api-section";
 import { QuranApiSection } from "@/components/api-reference/quran-api-section";
-import { ApiReferenceFooter } from "@/components/api-reference/api-reference-footer";
 
 export default function ApiReferencePage() {
   return (
@@ -44,15 +43,8 @@ export default function ApiReferencePage() {
             <div id="quran-api" className="scroll-mt-20">
               <QuranApiSection />
             </div>
-            
-            <ApiReferenceFooter />
           </div>
         </main>
-        <footer className="py-8 border-t border-oa-border">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-8 text-center text-sm text-oa-text-tertiary">
-            Made with 🤍 with Next.js
-          </div>
-        </footer>
       </div>
     </div>
   );
