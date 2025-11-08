@@ -14,6 +14,7 @@ import {
   HelpCircle,
   FileText,
 } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface NavSection {
   id: string;
@@ -75,7 +76,11 @@ const navSections: NavSection[] = [
   },
 ];
 
-export function EnhancedSidebar() {
+interface EnhancedSidebarProps {
+  isSheet?: boolean;
+}
+
+export function EnhancedSidebar({ isSheet = false }: EnhancedSidebarProps) {
   const [expandedSections, setExpandedSections] = useState<Set<string>>(
     new Set(["getting-started", "api-reference"]),
   );
@@ -91,7 +96,14 @@ export function EnhancedSidebar() {
   };
 
   return (
-    <aside className="w-64 fixed top-0 left-0 h-full border-r border-oa-border bg-oa-dark p-4 flex-col hidden md:flex z-10 overflow-y-auto">
+    <aside
+      className={cn(
+        "bg-oa-dark p-4 flex flex-col z-10 overflow-y-auto",
+        isSheet
+          ? "w-full h-full"
+          : "w-64 fixed top-0 left-0 h-full border-r border-oa-border hidden md:flex",
+      )}
+    >
       {/* Logo */}
       <div className="h-14 flex items-center px-2 mb-6">
         <Link href="#" className="flex items-center gap-2">

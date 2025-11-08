@@ -1,11 +1,33 @@
+"use client";
+
 import React from "react";
 import Link from "next/link";
+import { Menu } from "lucide-react";
+import {
+  Sheet,
+  SheetContent,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { EnhancedSidebar } from "./enhanced-sidebar";
+import { Button } from "@/components/ui/button";
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-0 h-14 border-b border-oa-border bg-oa-dark/80 backdrop-blur-xs">
+    <header className="sticky top-0 z-50 h-14 border-b border-oa-border bg-oa-dark/80 backdrop-blur-sm">
       <div className="flex h-full items-center justify-between px-4 md:px-8">
-        <div className="md:hidden" />
+        <div className="md:hidden">
+          <Sheet>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon">
+                <Menu className="h-6 w-6" />
+                <span className="sr-only">Open Menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="left" className="p-0 w-64 bg-oa-dark border-r-oa-border">
+              <EnhancedSidebar isSheet={true} />
+            </SheetContent>
+          </Sheet>
+        </div>
         <nav className="hidden md:flex items-center space-x-4">
           <Link href="#" className="main-nav-link-active">
             ডকুমেন্টেশন
