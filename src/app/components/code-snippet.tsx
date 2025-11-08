@@ -1,14 +1,15 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Image from "next/image";
 
 interface CodeSnippetProps {
   code: string;
   language: string;
+  showLineNumbers?: boolean;
 }
 
-export function CodeSnippet({ code, language }: CodeSnippetProps) {
+export function CodeSnippet({ code, language, showLineNumbers = true }: CodeSnippetProps) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
@@ -21,10 +22,43 @@ export function CodeSnippet({ code, language }: CodeSnippetProps) {
     }
   };
 
+  // Simple syntax highlighting rules
+  const highlightCode = (code: string, lang: string) => {
+    // JavaScript/TypeScript keywords
+    if (["javascript", "js", "typescript", "ts", "jsx", "tsx"].includes(lang.toLowerCase())) {
+      return code
+        .replace(/\b(import|from|const|let|var|function|async|await|return|if|else|for|while|do|switch|case|break|default|class|extends|new|this|super|static|public|private|protected|interface|type|enum)\b/g, '<span class="text-blue-400">$1</span>')
+        .replace(/(['"`])(.*?)\1/g, '<span class="text-green-400">$1$2$1</span>')
+        .replace(/\/\/(.*?)$/gm, '<span class="text-gray-500">\/\/$1</span>');
+    }
+    
+    // Python keywords
+    if (["python", "py"].includes(lang.toLowerCase())) {
+      return code
+        .replace(/\b(import|from|def|class|if|else|elif|for|while|return|async|await|with|as|try|except|finally|raise|assert|lambda|True|False|None|and|or|not|in|is)\b/g, '<span class="text-blue-400">$1</span>')
+        .replace(/(['"`])(.*?)\1/g, '<span class="text-green-400">$1$2$1</span>')
+        .replace(/#(.*?)$/gm, '<span class="text-gray-500">#$1</span>');
+    }
+    
+    // Bash/cURL
+    if (["bash", "sh", "curl"].includes(lang.toLowerCase())) {
+      return code
+        .replace(/\b(curl|echo|export|set|cd|ls|mkdir|cp|mv|rm|sudo|docker|git|npm|yarn|pnpm|node|python|java|go|rust)\b/g, '<span class="text-blue-400">$1</span>')
+        .replace(/(['"`])(.*?)\1/g, '<span class="text-green-400">$1$2$1</span>')
+        .replace(/#(.*?)$/gm, '<span class="text-gray-500">#$1</span>')
+        .replace(/-([\w]+)/g, '<span class="text-yellow-400">-$1</span>');
+    }
+
+    return code;
+  };
+
+  const lines = code.split('\n');
+  const highlightedCode = highlightCode(code, language);
+
   return (
     <div className="bg-oa-bg-dark rounded-lg border border-oa-border overflow-hidden">
       <div className="flex justify-between items-center px-4 py-2 border-b border-oa-border bg-oa-bg-light">
-        <span className="text-sm text-oa-text-secondary">{language}</span>
+        <span className="text-sm text-oa-text-secondary capitalize">{language}</span>
         <button
           type="button"
           onClick={handleCopy}
@@ -54,10 +88,20 @@ export function CodeSnippet({ code, language }: CodeSnippetProps) {
           )}
         </button>
       </div>
-      <div className="p-4 text-sm overflow-x-auto">
-        <pre>
-          <code className="font-mono text-oa-text-secondary text-xs leading-relaxed">
-            {code}
+      <div className="overflow-x-auto">
+        <pre className="p-4 text-sm">
+          <code className="font-mono text-oa-text-secondary text-xs leading-relaxed flex">
+            {showLineNumbers && (
+              <span className="text-gray-600 select-none mr-4 flex flex-col">
+                {lines.map((_, i) => (
+                  <span key={i}>{i + 1}</span>
+                ))}
+              </span>
+            )}
+            <span
+              dangerouslySetInnerHTML={{ __html: highlightedCode }}
+              className="flex-1"
+            />
           </code>
         </pre>
       </div>
