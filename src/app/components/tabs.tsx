@@ -17,7 +17,7 @@ export function Tabs({ tabs, defaultTab }: TabsProps) {
   const [activeTab, setActiveTab] = useState(defaultTab || tabs[0]?.id || "");
 
   return (
-    <div className="w-full">
+    <div className="w-full bg-oa-bg-dark rounded-lg border border-oa-border overflow-hidden">
       {/* Tab buttons */}
       <div className="flex border-b border-oa-border overflow-x-auto">
         {tabs.map((tab) => (
@@ -36,7 +36,7 @@ export function Tabs({ tabs, defaultTab }: TabsProps) {
       </div>
 
       {/* Tab content */}
-      <div className="pt-4">
+      <div className="bg-oa-bg-dark rounded-b-lg">
         {tabs.find((tab) => tab.id === activeTab)?.content}
       </div>
     </div>

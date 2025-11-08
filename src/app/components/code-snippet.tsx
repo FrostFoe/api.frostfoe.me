@@ -15,6 +15,7 @@ export function CodeSnippet({
   showLineNumbers = true,
 }: CodeSnippetProps) {
   const [highlightedCode, setHighlightedCode] = useState("");
+  const [isCopied, setIsCopied] = useState(false);
 
   useEffect(() => {
     const highlight = (code: string, lang: string) => {
@@ -71,15 +72,32 @@ export function CodeSnippet({
     setHighlightedCode(highlight(code, language));
   }, [code, language]);
 
+  const handleCopy = () => {
+    navigator.clipboard.writeText(code);
+    setIsCopied(true);
+    setTimeout(() => setIsCopied(false), 2000);
+  };
+
   const lines = code.split("\n");
 
   return (
-    <div className="bg-oa-bg-dark rounded-lg border border-oa-border overflow-hidden">
+    <div className="bg-oa-bg-dark rounded-b-lg border border-t-0 border-oa-border overflow-hidden relative">
+       <button
+        onClick={handleCopy}
+        className="absolute top-2 right-2 p-1.5 rounded-md bg-oa-bg-light hover:bg-opacity-80 text-oa-text-tertiary hover:text-white"
+        aria-label="Copy code"
+      >
+        {isCopied ? (
+          <Check className="h-4 w-4" />
+        ) : (
+          <Copy className="h-4 w-4" />
+        )}
+      </button>
       <div className="overflow-x-auto">
-        <pre className="p-4 text-sm">
+        <pre className="p-4 text-sm whitespace-pre-wrap break-words">
           <code className="font-mono text-oa-text-secondary text-xs leading-relaxed flex">
             {showLineNumbers && (
-              <span className="text-gray-600 select-none mr-4 flex flex-col">
+              <span className="text-gray-600 select-none mr-4 flex flex-col text-right">
                 {lines.map((_, i) => (
                   <span key={i}>{i + 1}</span>
                 ))}

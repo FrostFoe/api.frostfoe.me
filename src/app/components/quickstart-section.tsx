@@ -28,7 +28,7 @@ export function QuickstartSection() {
         </div>
 
         {/* Code Example */}
-        <div className="bg-oa-bg-dark rounded-lg border border-oa-border overflow-hidden">
+        <div>
           <Tabs
             tabs={[
               {
