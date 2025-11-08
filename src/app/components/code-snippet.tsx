@@ -14,18 +14,7 @@ export function CodeSnippet({
   language,
   showLineNumbers = true,
 }: CodeSnippetProps) {
-  const [copied, setCopied] = useState(false);
   const [highlightedCode, setHighlightedCode] = useState("");
-
-  const handleCopy = async () => {
-    try {
-      await navigator.clipboard.writeText(code);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch {
-      console.error("Failed to copy");
-    }
-  };
 
   useEffect(() => {
     const highlight = (code: string, lang: string) => {
@@ -86,24 +75,6 @@ export function CodeSnippet({
 
   return (
     <div className="bg-oa-bg-dark rounded-lg border border-oa-border overflow-hidden">
-      <div className="flex justify-between items-center px-4 py-2 border-b border-oa-border bg-oa-bg-light">
-        <span className="text-sm text-oa-text-secondary capitalize">
-          {language}
-        </span>
-        <button
-          type="button"
-          onClick={handleCopy}
-          className="btn-ghost p-1.5 rounded transition-colors hover:bg-oa-border"
-          aria-label={copied ? "Copied!" : "Copy code"}
-          title={copied ? "Copied!" : "Copy code"}
-        >
-          {copied ? (
-            <Check className="w-4 h-4 text-green-400" />
-          ) : (
-            <Copy className="w-4 h-4" />
-          )}
-        </button>
-      </div>
       <div className="overflow-x-auto">
         <pre className="p-4 text-sm">
           <code className="font-mono text-oa-text-secondary text-xs leading-relaxed flex">
