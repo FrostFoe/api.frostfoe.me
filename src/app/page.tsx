@@ -49,7 +49,7 @@ export default function Page(): JSX.Element {
       {/* Main area */}
       <div className="flex-1 md:pl-64">
         {/* Header */}
-        <header className="sticky top-0 z-0 h-14 border-b border-oa-border bg-oa-dark/80 backdrop-blur-sm">
+        <header className="sticky top-0 z-0 h-14 border-b border-oa-border bg-oa-dark/80 backdrop-blur-xs">
           <div className="flex h-full items-center justify-between px-4 md:px-8">
             <div className="md:hidden" />
             <nav className="hidden md:flex items-center space-x-2">
@@ -262,7 +262,7 @@ console.log(response.output_text);`}
                       </span>
                       <img
                         src="/icons/arrow.svg"
-                        className="w-5 h-5 ml-2 text-white flex-shrink-0"
+                        className="w-5 h-5 ml-2 text-white shrink-0"
                         alt="Arrow"
                       />
                     </div>
