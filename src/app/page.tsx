@@ -4,7 +4,6 @@ import { Header } from "./header";
 import { EnhancedSidebar } from "./components/enhanced-sidebar";
 import { Breadcrumb } from "./components/breadcrumb";
 import { LandingContent } from "@/components/landing/landing-content";
-import { LandingFooter } from "@/components/landing/landing-footer";
 
 export default function Page() {
   return (
@@ -25,7 +24,6 @@ export default function Page() {
         <main className="p-4 sm:p-6 md:p-8">
           <div className="max-w-5xl mx-auto">
             <LandingContent />
-            <LandingFooter />
           </div>
         </main>
         
