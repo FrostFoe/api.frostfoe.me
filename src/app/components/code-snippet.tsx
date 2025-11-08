@@ -9,8 +9,13 @@ interface CodeSnippetProps {
   showLineNumbers?: boolean;
 }
 
-export function CodeSnippet({ code, language, showLineNumbers = true }: CodeSnippetProps) {
+export function CodeSnippet({
+  code,
+  language,
+  showLineNumbers = true,
+}: CodeSnippetProps) {
   const [copied, setCopied] = useState(false);
+  const [highlightedCode, setHighlightedCode] = useState(code);
 
   const handleCopy = async () => {
     try {
@@ -22,38 +27,40 @@ export function CodeSnippet({ code, language, showLineNumbers = true }: CodeSnip
     }
   };
 
-  // Simple syntax highlighting rules
-  const highlightCode = (code: string, lang: string) => {
-    // JavaScript/TypeScript keywords
-    if (["javascript", "js", "typescript", "ts", "jsx", "tsx"].includes(lang.toLowerCase())) {
-      return code
-        .replace(/\b(import|from|const|let|var|function|async|await|return|if|else|for|while|do|switch|case|break|default|class|extends|new|this|super|static|public|private|protected|interface|type|enum)\b/g, '<span class="text-blue-400">$1</span>')
-        .replace(/(['"`])(.*?)\1/g, '<span class="text-green-400">$1$2$1</span>')
-        .replace(/\/\/(.*?)$/gm, '<span class="text-gray-500">\/\/$1</span>');
-    }
-    
-    // Python keywords
-    if (["python", "py"].includes(lang.toLowerCase())) {
-      return code
-        .replace(/\b(import|from|def|class|if|else|elif|for|while|return|async|await|with|as|try|except|finally|raise|assert|lambda|True|False|None|and|or|not|in|is)\b/g, '<span class="text-blue-400">$1</span>')
-        .replace(/(['"`])(.*?)\1/g, '<span class="text-green-400">$1$2$1</span>')
-        .replace(/#(.*?)$/gm, '<span class="text-gray-500">#$1</span>');
-    }
-    
-    // Bash/cURL
-    if (["bash", "sh", "curl"].includes(lang.toLowerCase())) {
-      return code
-        .replace(/\b(curl|echo|export|set|cd|ls|mkdir|cp|mv|rm|sudo|docker|git|npm|yarn|pnpm|node|python|java|go|rust)\b/g, '<span class="text-blue-400">$1</span>')
-        .replace(/(['"`])(.*?)\1/g, '<span class="text-green-400">$1$2$1</span>')
-        .replace(/#(.*?)$/gm, '<span class="text-gray-500">#$1</span>')
-        .replace(/-([\w]+)/g, '<span class="text-yellow-400">-$1</span>');
-    }
+  useEffect(() => {
+    const highlight = (code: string, lang: string) => {
+      // JavaScript/TypeScript keywords
+      if (["javascript", "js", "typescript", "ts", "jsx", "tsx"].includes(lang.toLowerCase())) {
+        return code
+          .replace(/\b(import|from|const|let|var|function|async|await|return|if|else|for|while|do|switch|case|break|default|class|extends|new|this|super|static|public|private|protected|interface|type|enum)\b/g, '<span class="text-blue-400">$1</span>')
+          .replace(/(['"`])(.*?)\1/g, '<span class="text-green-400">$1$2$1</span>')
+          .replace(/\/\/(.*?)$/gm, '<span class="text-gray-500">\/\/$1</span>');
+      }
 
-    return code;
-  };
+      // Python keywords
+      if (["python", "py"].includes(lang.toLowerCase())) {
+        return code
+          .replace(/\b(import|from|def|class|if|else|elif|for|while|return|async|await|with|as|try|except|finally|raise|assert|lambda|True|False|None|and|or|not|in|is)\b/g, '<span class="text-blue-400">$1</span>')
+          .replace(/(['"`])(.*?)\1/g, '<span class="text-green-400">$1$2$1</span>')
+          .replace(/#(.*?)$/gm, '<span class="text-gray-500">#$1</span>');
+      }
+
+      // Bash/cURL
+      if (["bash", "sh", "curl"].includes(lang.toLowerCase())) {
+        return code
+          .replace(/\b(curl|echo|export|set|cd|ls|mkdir|cp|mv|rm|sudo|docker|git|npm|yarn|pnpm|node|python|java|go|rust)\b/g, '<span class="text-blue-400">$1</span>')
+          .replace(/(['"`])(.*?)\1/g, '<span class="text-green-400">$1$2$1</span>')
+          .replace(/#(.*?)$/gm, '<span class="text-gray-500">#$1</span>')
+          .replace(/-([\w-]+)/g, '<span class="text-yellow-400">-$1</span>');
+      }
+
+      return code;
+    };
+
+    setHighlightedCode(highlight(code, language));
+  }, [code, language]);
 
   const lines = code.split('\n');
-  const highlightedCode = highlightCode(code, language);
 
   return (
     <div className="bg-oa-bg-dark rounded-lg border border-oa-border overflow-hidden">
