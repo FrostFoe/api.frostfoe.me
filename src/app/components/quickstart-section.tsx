@@ -42,28 +42,6 @@ export function QuickstartSection() {
                   <span className="h-3 w-3 rounded-full bg-yellow-500/50"></span>
                   <span className="h-3 w-3 rounded-full bg-green-500/50"></span>
                 </div>
-                <div className="absolute inset-x-0 -top-1">
-                  <TabsList className="bg-transparent border-none p-0">
-                    <TabsTrigger
-                      value="javascript"
-                      className="text-xs data-[state=active]:bg-oa-bg-light data-[state=active]:text-white text-oa-text-tertiary"
-                    >
-                      script.js
-                    </TabsTrigger>
-                    <TabsTrigger
-                      value="curl"
-                      className="text-xs data-[state=active]:bg-oa-bg-light data-[state=active]:text-white text-oa-text-tertiary"
-                    >
-                      terminal
-                    </TabsTrigger>
-                    <TabsTrigger
-                      value="python"
-                      className="text-xs data-[state=active]:bg-oa-bg-light data-[state=active]:text-white text-oa-text-tertiary"
-                    >
-                      script.py
-                    </TabsTrigger>
-                  </TabsList>
-                </div>
               </div>
             </div>
             <TabsContent value="javascript">
