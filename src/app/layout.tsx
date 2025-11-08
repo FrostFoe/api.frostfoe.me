@@ -28,24 +28,24 @@ const lateef = Lateef({
 
 // 🧠 SEO Metadata
 export const metadata: Metadata = {
-  title: "FrostFoe API — বুদ্ধিমান এজেন্ট, ছবি, অডিও ও রিজনিং মডেল",
+  title: "ফ্রস্টফয় এপিআই — বুদ্ধিমান এজেন্ট, ছবি, অডিও ও রিজনিং মডেল",
   description:
-    "FrostFoe API দিয়ে তৈরি করো পরবর্তী প্রজন্মের স্মার্ট অ্যাপ — টেক্সট, ইমেজ, অডিও, এজেন্ট ও রিজনিং ক্ষমতা এক প্ল্যাটফর্মে।",
+    "ফ্রস্টফয় এপিআই দিয়ে তৈরি করুন পরবর্তী প্রজন্মের স্মার্ট অ্যাপ — টেক্সট, ইমেজ, অডিও, এজেন্ট ও রিজনিং ক্ষমতা এক প্ল্যাটফর্মে।",
   keywords:
-    "FrostFoe, FrostFoe API, AI API, Agent SDK, বাংলা এআই, Generative AI, Image API, Reasoning, Chat API, ফ্রস্টফয়, এজেন্ট এপিআই, কৃত্রিম বুদ্ধিমত্তা",
-  authors: [{ name: "FrostFoe Technologies" }],
+    "ফ্রস্টফয়, ফ্রস্টফয় এপিআই, AI API, Agent SDK, বাংলা এআই, Generative AI, Image API, Reasoning, Chat API, কৃত্রিম বুদ্ধিমত্তা",
+  authors: [{ name: "ফ্রস্টফয় টেকনোলজিস" }],
   openGraph: {
-    title: "FrostFoe API — এজেন্ট, ছবি, অডিও ও বুদ্ধিমান রিজনিং",
+    title: "ফ্রস্টফয় এপিআই — এজেন্ট, ছবি, অডিও ও বুদ্ধিমান রিজনিং",
     description:
       "একটি শক্তিশালী AI API প্ল্যাটফর্ম যা টেক্সট, ভিশন, ইমেজ জেনারেশন, এজেন্টিক সিস্টেম ও রিজনিং সমর্থন করে।",
     url: "https://frostfoe.ai",
-    siteName: "FrostFoe Platform",
+    siteName: "ফ্রস্টফয় প্ল্যাটফর্ম",
     locale: "bn_BD",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "FrostFoe API — Next-gen AI Platform",
+    title: "ফ্রস্টফয় এপিআই — Next-gen AI Platform",
     description:
       "Use FrostFoe API to build AI-powered apps with chat, vision, image, audio, and agentic intelligence — all in one unified platform.",
   },
@@ -63,14 +63,11 @@ export default function RootLayout({
       className={`${poppins.variable} ${hindSiliguri.variable} ${lateef.variable} scroll-smooth`}
       suppressHydrationWarning
     >
-      <body
-        className="antialiased bg-gray-50 dark:bg-gray-900 transition-colors duration-300 font-bengali"
-        suppressHydrationWarning
-      >
+      <body className="antialiased" suppressHydrationWarning>
         <ThemeProvider
           attribute="class"
-          defaultTheme="system"
-          enableSystem
+          defaultTheme="dark"
+          enableSystem={false}
           disableTransitionOnChange
         >
           <main>{children}</main>
