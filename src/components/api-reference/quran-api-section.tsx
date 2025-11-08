@@ -1,6 +1,6 @@
 import React from "react";
 import { HttpBadge } from "../http-badge";
-import { CodeSnippet } from "../code-snippet";
+import { CodeSnippet } from "@/app/components/code-snippet";
 
 export function QuranApiSection() {
   return (
