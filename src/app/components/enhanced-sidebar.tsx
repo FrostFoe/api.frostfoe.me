@@ -69,10 +69,10 @@ const navSections: NavSection[] = [
     title: "রিসোর্স",
     icon: Lightbulb,
     items: [
-      { label: "উদাহরণ", href: "/#examples" },
-      { label: "এসডিকে", href: "/#sdks" },
-      { label: "সাধারণ প্রশ্নাবলী", href: "/#faq" },
-      { label: "সহায়তা", href: "/#support" },
+      { label: "উদাহরণ", href: "/resources#examples" },
+      { label: "এসডিকে", href: "/resources#sdks" },
+      { label: "সাধারণ প্রশ্নাবলী", href: "/resources#faq" },
+      { label: "সহায়তা", href: "/resources#support" },
     ],
   },
 ];
@@ -84,7 +84,7 @@ interface EnhancedSidebarProps {
 export function EnhancedSidebar({ isSheet = false }: EnhancedSidebarProps) {
   const pathname = usePathname();
   const [expandedSections, setExpandedSections] = useState<Set<string>>(
-    new Set(["getting-started", "api-reference", "guides"]),
+    new Set(["getting-started", "api-reference", "guides", "resources"]),
   );
 
   const toggleSection = (sectionId: string) => {
@@ -99,9 +99,7 @@ export function EnhancedSidebar({ isSheet = false }: EnhancedSidebarProps) {
 
   const isActive = (href: string) => {
     const cleanHref = href.split('#')[0];
-    // Special case for root, which should only be active if it's exactly "/"
     if (cleanHref === "/") return pathname === "/";
-    // For other paths, check if the pathname starts with the href
     return pathname.startsWith(cleanHref);
   };
 
@@ -114,7 +112,6 @@ export function EnhancedSidebar({ isSheet = false }: EnhancedSidebarProps) {
           : "w-64 fixed top-0 left-0 h-full border-r border-oa-border hidden md:flex",
       )}
     >
-      {/* Logo */}
       <div className="h-14 flex items-center px-2 mb-6">
         <Link href="/" className="flex items-center gap-2">
           <Image
@@ -129,7 +126,6 @@ export function EnhancedSidebar({ isSheet = false }: EnhancedSidebarProps) {
         </Link>
       </div>
 
-      {/* Search Bar */}
       <div className="mb-6 px-2">
         <button
           type="button"
@@ -150,11 +146,9 @@ export function EnhancedSidebar({ isSheet = false }: EnhancedSidebarProps) {
         </button>
       </div>
 
-      {/* Navigation Sections */}
       <nav className="flex-1 space-y-1">
         {navSections.map((section) => (
           <div key={section.id} className="mb-4">
-            {/* Section Header */}
             <button
               onClick={() => toggleSection(section.id)}
               className="flex items-center justify-between w-full px-3 py-2 rounded-lg hover:bg-oa-bg-dark transition-colors text-sm font-medium text-oa-text-secondary hover:text-white"
@@ -170,7 +164,6 @@ export function EnhancedSidebar({ isSheet = false }: EnhancedSidebarProps) {
               />
             </button>
 
-            {/* Section Items */}
             {expandedSections.has(section.id) && (
               <div className="mt-1 ml-2 space-y-0.5 border-l border-oa-border">
                 {section.items.map((item) => (
@@ -199,7 +192,6 @@ export function EnhancedSidebar({ isSheet = false }: EnhancedSidebarProps) {
         ))}
       </nav>
 
-      {/* Bottom Links */}
       <div className="pt-4 border-t border-oa-border space-y-2">
         <Link
           href="#"

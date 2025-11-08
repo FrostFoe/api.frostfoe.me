@@ -61,6 +61,15 @@ export function Header() {
             >
               নির্দেশিকা
             </Link>
+            <Link
+              href="/resources"
+              className={cn(
+                "main-nav-link",
+                pathname.startsWith("/resources") && "main-nav-link-active"
+              )}
+            >
+              রিসোর্স
+            </Link>
           </nav>
         </div>
         <div className="flex items-center gap-3">
