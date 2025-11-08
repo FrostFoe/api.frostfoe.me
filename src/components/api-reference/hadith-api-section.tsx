@@ -1,5 +1,5 @@
 import React from "react";
-import { HttpBadge } from "../http-badge";
+import { HttpBadge } from "@/app/components/http-badge";
 import { CodeSnippet } from "@/app/components/code-snippet";
 
 export function HadithApiSection() {
