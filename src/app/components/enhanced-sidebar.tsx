@@ -100,7 +100,8 @@ export function EnhancedSidebar({ isSheet = false }: EnhancedSidebarProps) {
   const isActive = (href: string) => {
     const cleanHref = href.split('#')[0];
     if (cleanHref === "/") return pathname === "/";
-    return pathname.startsWith(cleanHref);
+    // For other paths, check if the pathname starts with the href
+    return pathname.startsWith(cleanHref) && cleanHref !== "/";
   };
 
   return (
