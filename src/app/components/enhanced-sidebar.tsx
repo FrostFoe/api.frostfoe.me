@@ -36,7 +36,7 @@ const navSections: NavSection[] = [
     title: "শুরু করুন",
     icon: Rocket,
     items: [
-      { label: "ভূমিকা", href: "/#introduction" },
+      { label: "ভূমিকা", href: "/" },
       { label: "ইনস্টলেশন", href: "/#installation" },
       { label: "অথেন্টিকেশন", href: "/#authentication" },
       { label: "আপনার প্রথম অনুরোধ", href: "/#first-request" },
@@ -58,10 +58,10 @@ const navSections: NavSection[] = [
     title: "নির্দেশিকা",
     icon: Wrench,
     items: [
-      { label: "ত্রুটি ব্যবস্থাপনা", href: "/#errors" },
-      { label: "রেট লিমিট", href: "/#rate-limiting" },
-      { label: "ওয়েবহুক", href: "/#webhooks" },
-      { label: "সেরা অনুশীলন", href: "/#best-practices" },
+      { label: "ত্রুটি ব্যবস্থাপনা", href: "/guides#errors" },
+      { label: "রেট লিমিট", href: "/guides#rate-limiting" },
+      { label: "ওয়েবহুক", href: "/guides#webhooks" },
+      { label: "সেরা অনুশীলন", href: "/guides#best-practices" },
     ],
   },
   {
@@ -84,7 +84,7 @@ interface EnhancedSidebarProps {
 export function EnhancedSidebar({ isSheet = false }: EnhancedSidebarProps) {
   const pathname = usePathname();
   const [expandedSections, setExpandedSections] = useState<Set<string>>(
-    new Set(["getting-started", "api-reference"]),
+    new Set(["getting-started", "api-reference", "guides"]),
   );
 
   const toggleSection = (sectionId: string) => {
