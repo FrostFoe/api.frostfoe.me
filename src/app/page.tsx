@@ -14,7 +14,7 @@ export default function Page() {
     <div className="flex min-h-screen bg-oa-dark text-oa-text-primary">
       <EnhancedSidebar />
 
-      <div className="flex-1 md:pl-64 lg:pr-48">
+      <div className="flex-1 md:pl-64">
         <Header />
 
         <Breadcrumb
@@ -34,7 +34,6 @@ export default function Page() {
           </div>
         </main>
       </div>
-      <TableOfContents />
     </div>
   );
 }
