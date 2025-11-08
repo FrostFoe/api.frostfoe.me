@@ -1,11 +1,11 @@
 import { Header } from "../header";
 import { EnhancedSidebar } from "../components/enhanced-sidebar";
 import { Breadcrumb } from "../components/breadcrumb";
-import { AgentKitSection } from "../components/agent-kit-section";
-import { ModelsSection } from "../components/models-section";
-import { HadithApiSection } from "../components/hadith-api-section";
-import { QuranApiSection } from "../components/quran-api-section";
-import { FooterSection } from "../components/footer-section";
+import { AgentKitSection } from "@/components/api-reference/agent-kit-section";
+import { ModelsSection } from "@/components/api-reference/models-section";
+import { HadithApiSection } from "@/components/api-reference/hadith-api-section";
+import { QuranApiSection } from "@/components/api-reference/quran-api-section";
+import { ApiReferenceFooter } from "@/components/api-reference/api-reference-footer";
 
 export default function ApiReferencePage() {
   return (
@@ -45,7 +45,7 @@ export default function ApiReferencePage() {
               <QuranApiSection />
             </div>
             
-            <FooterSection />
+            <ApiReferenceFooter />
           </div>
         </main>
         <footer className="py-8 border-t border-oa-border">

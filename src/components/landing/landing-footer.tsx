@@ -16,23 +16,23 @@ interface FooterItem {
 const FOOTER_ITEMS: FooterItem[] = [
   {
     icon: HelpCircle,
-    title: "সহায়তা কেন্দ্র",
-    desc: "অ্যাকাউন্ট ও বিলিং সংক্রান্ত প্রশ্নাবলি",
+    title: "সাধারণ সহায়তা",
+    desc: "আপনার প্রশ্ন ও উত্তর খুঁজুন",
   },
   {
     icon: Users,
-    title: "ডেভেলপার কমিউনিটি",
-    desc: "অন্য ফ্রস্টফয় ডেভেলপারদের সাথে আলোচনা করুন",
+    title: "কমিউনিটি ফোরাম",
+    desc: "কমিউনিটির সাথে যুক্ত হন",
   },
   {
     icon: BookOpen,
-    title: "রিসোর্স হাব",
-    desc: "উদাহরণ ও কোড স্নিপেট থেকে শিখুন",
+    title: "ব্লগ ও টিউটোরিয়াল",
+    desc: "নতুন ফিচার সম্পর্কে জানুন",
   },
   {
     icon: Server,
-    title: "স্ট্যাটাস",
-    desc: "ফ্রস্টফয় সার্ভিসের বর্তমান অবস্থা দেখুন",
+    title: "সিস্টেম স্ট্যাটাস",
+    desc: "সার্ভিসের অবস্থা মনিটর করুন",
   },
 ];
 
@@ -48,7 +48,7 @@ function FooterCard({ item }: { item: FooterItem }) {
   );
 }
 
-export function FooterSection() {
+export function LandingFooter() {
   return (
     <section className="mt-24 mb-12">
       <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">

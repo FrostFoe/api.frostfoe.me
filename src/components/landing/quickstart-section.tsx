@@ -6,7 +6,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs";
-import { CodeSnippet } from "./code-snippet";
+import { CodeSnippet } from "@/app/components/code-snippet";
 
 export function QuickstartSection() {
   return (
@@ -25,7 +25,7 @@ export function QuickstartSection() {
             মৌলিক ফিচারগুলো বুঝে নিন।
           </p>
           <Link
-            href="#hadith-api"
+            href="/api-reference"
             className="inline-block btn btn-primary px-6 py-2.5 text-base w-full sm:w-auto text-center"
           >
             এপিআই ডকুমেন্টেশন দেখুন

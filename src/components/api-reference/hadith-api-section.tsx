@@ -1,6 +1,6 @@
 import React from "react";
-import { HttpBadge } from "./http-badge";
-import { CodeSnippet } from "./code-snippet";
+import { HttpBadge } from "../http-badge";
+import { CodeSnippet } from "../code-snippet";
 
 export function HadithApiSection() {
   return (
