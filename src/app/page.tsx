@@ -1,16 +1,22 @@
 "use client";
+
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Page(): JSX.Element {
+export default function Page() {
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen bg-oa-dark text-oa-text-primary">
       {/* Sidebar */}
       <aside className="w-64 fixed top-0 left-0 h-full border-r border-oa-border bg-oa-dark p-4 flex-col hidden md:flex z-10">
         <div className="h-14 flex items-center px-2">
           <Link href="#" className="flex items-center gap-2">
-            <img src="/logo.svg" className="text-white h-6" alt="Frostfy Platform" />
+            <Image
+              src="/logo.svg"
+              width={24}
+              height={24}
+              alt="Frostfy Platform Logo"
+            />
             <span className="font-semibold text-lg text-white">
               ফ্রস্টফয় এপিআই প্ল্যাটফর্ম
             </span>
@@ -35,12 +41,17 @@ export default function Page(): JSX.Element {
         </div>
 
         <nav className="mt-6 flex-1 space-y-2 px-2">
-          <Link href="#" className="sidebar-link">
-            <img src="/icons/cookbook.svg" className="w-5 h-5" alt="Cookbook" />
+          <Link href="#" className="sidebar-link flex items-center gap-2">
+            <Image
+              src="/icons/cookbook.svg"
+              width={20}
+              height={20}
+              alt="Cookbook"
+            />
             <span>রিসোর্স গাইড</span>
           </Link>
-          <Link href="#" className="sidebar-link">
-            <img src="/icons/forum.svg" className="w-5 h-5" alt="Forum" />
+          <Link href="#" className="sidebar-link flex items-center gap-2">
+            <Image src="/icons/forum.svg" width={20} height={20} alt="Forum" />
             <span>কমিউনিটি</span>
           </Link>
         </nav>
@@ -52,7 +63,7 @@ export default function Page(): JSX.Element {
         <header className="sticky top-0 z-0 h-14 border-b border-oa-border bg-oa-dark/80 backdrop-blur-xs">
           <div className="flex h-full items-center justify-between px-4 md:px-8">
             <div className="md:hidden" />
-            <nav className="hidden md:flex items-center space-x-2">
+            <nav className="hidden md:flex items-center space-x-4">
               <Link href="#" className="main-nav-link-active">
                 ডকুমেন্টেশন
               </Link>
@@ -61,10 +72,7 @@ export default function Page(): JSX.Element {
               </Link>
             </nav>
             <div className="flex items-center gap-3">
-              <Link
-                href="#"
-                className="btn btn-ghost text-sm hidden sm:block"
-              >
+              <Link href="#" className="btn btn-ghost text-sm hidden sm:block">
                 লগ ইন
               </Link>
               <Link href="#" className="btn btn-primary text-sm">
@@ -84,31 +92,31 @@ export default function Page(): JSX.Element {
               </h1>
 
               <div className="grid md:grid-cols-2 gap-6 items-start">
-                <div className="flex flex-col justify-center h-full">
+                <div className="flex flex-col justify-center">
                   <h2 className="text-lg font-semibold text-white">
                     ডেভেলপার কুইকস্টার্ট
                   </h2>
                   <p className="text-md text-oa-text-secondary mt-2 mb-6">
-                    মাত্র কয়েক মিনিটেই তোমার প্রথম Frostfy API অনুরোধ পাঠাও
-                    এবং প্ল্যাটফর্মের মৌলিক ফিচারগুলো বুঝে নাও।
+                    মাত্র কয়েক মিনিটেই তোমার প্রথম Frostfy API অনুরোধ পাঠাও এবং
+                    প্ল্যাটফর্মের মৌলিক ফিচারগুলো বুঝে নাও।
                   </p>
-                  <div>
-                    <Link
-                      href="#"
-                      className="inline-block btn btn-primary px-6 py-2.5 text-base"
-                    >
-                      শুরু করো
-                    </Link>
-                  </div>
+                  <Link
+                    href="#"
+                    className="inline-block btn btn-primary px-6 py-2.5 text-base"
+                  >
+                    শুরু করো
+                  </Link>
                 </div>
 
+                {/* Code Example */}
                 <div className="bg-oa-bg-dark rounded-lg border border-oa-border overflow-hidden">
                   <div className="flex justify-between items-center px-4 py-2 border-b border-oa-border">
                     <div className="text-sm text-oa-text-secondary flex items-center gap-2">
                       <span>জাভাস্ক্রিপ্ট</span>
-                      <img
+                      <Image
                         src="/icons/chevron.svg"
-                        className="w-2 h-2 text-oa-text-tertiary"
+                        width={8}
+                        height={8}
                         alt="Chevron"
                       />
                     </div>
@@ -117,17 +125,18 @@ export default function Page(): JSX.Element {
                       className="btn-ghost p-1 rounded"
                       aria-label="Copy code"
                     >
-                      <img
+                      <Image
                         src="/icons/copy.svg"
-                        className="w-4 h-4 text-oa-text-tertiary"
+                        width={16}
+                        height={16}
                         alt="Copy"
                       />
                     </button>
                   </div>
-                  <div className="p-4 text-sm">
+                  <div className="p-4 text-sm overflow-x-auto">
                     <pre>
-                      <code className="font-mono">
-                        {`import Frostfy from "frostfy";
+                      <code className="font-mono text-oa-text-secondary">
+{`import Frostfy from "frostfy";
 const client = new Frostfy({ apiKey: process.env.FROSTFY_KEY });
 
 const response = await client.chat.create({
@@ -150,88 +159,59 @@ console.log(response.output_text);`}
               </h2>
 
               <div className="space-y-6 text-sm text-oa-text-secondary">
-                {/* Chat */}
-                <div className="p-4 border border-oa-border rounded-lg bg-oa-bg-dark">
-                  <h3 className="text-white font-semibold mb-2">
-                    🗣️ চ্যাট API — <code>/v1/chat</code>
-                  </h3>
-                  <pre>
-                    <code className="font-mono">
-                      {`POST https://api.frostfy.ai/v1/chat
+                {[
+                  {
+                    title: "🗣️ চ্যাট API — /v1/chat",
+                    code: `POST https://api.frostfy.ai/v1/chat
 {
   "model": "frostfy-5",
-  "messages": [
-    {"role": "user", "content": "আজকের আবহাওয়া কেমন?"}
-  ]
-}`}
-                    </code>
-                  </pre>
-                </div>
-
-                {/* Image */}
-                <div className="p-4 border border-oa-border rounded-lg bg-oa-bg-dark">
-                  <h3 className="text-white font-semibold mb-2">
-                    🖼️ ইমেজ API — <code>/v1/images</code>
-                  </h3>
-                  <pre>
-                    <code className="font-mono">
-                      {`POST https://api.frostfy.ai/v1/images
+  "messages": [{"role": "user", "content": "আজকের আবহাওয়া কেমন?"}]
+}`,
+                  },
+                  {
+                    title: "🖼️ ইমেজ API — /v1/images",
+                    code: `POST https://api.frostfy.ai/v1/images
 {
   "prompt": "বরফে ঢাকা পর্বতের উপর সূর্যোদয়",
   "size": "1024x1024"
-}`}
-                    </code>
-                  </pre>
-                </div>
-
-                {/* Agent */}
-                <div className="p-4 border border-oa-border rounded-lg bg-oa-bg-dark">
-                  <h3 className="text-white font-semibold mb-2">
-                    🤖 এজেন্ট API — <code>/v1/agents</code>
-                  </h3>
-                  <pre>
-                    <code className="font-mono">
-                      {`POST https://api.frostfy.ai/v1/agents
+}`,
+                  },
+                  {
+                    title: "🤖 এজেন্ট API — /v1/agents",
+                    code: `POST https://api.frostfy.ai/v1/agents
 {
   "name": "FrostBot",
   "tools": ["web", "math", "calendar"],
   "goal": "ব্যবহারকারীর প্রশ্নের উত্তর দেওয়া ও কাজ সম্পন্ন করা"
-}`}
-                    </code>
-                  </pre>
-                </div>
-
-                {/* Audio */}
-                <div className="p-4 border border-oa-border rounded-lg bg-oa-bg-dark">
-                  <h3 className="text-white font-semibold mb-2">
-                    🎧 অডিও API — <code>/v1/audio</code>
-                  </h3>
-                  <pre>
-                    <code className="font-mono">
-                      {`POST https://api.frostfy.ai/v1/audio
+}`,
+                  },
+                  {
+                    title: "🎧 অডিও API — /v1/audio",
+                    code: `POST https://api.frostfy.ai/v1/audio
 {
   "file": "recording.mp3",
   "task": "transcribe"
-}`}
-                    </code>
-                  </pre>
-                </div>
-
-                {/* Reasoning */}
-                <div className="p-4 border border-oa-border rounded-lg bg-oa-bg-dark">
-                  <h3 className="text-white font-semibold mb-2">
-                    🧠 রিজনিং API — <code>/v1/reasoning</code>
-                  </h3>
-                  <pre>
-                    <code className="font-mono">
-                      {`POST https://api.frostfy.ai/v1/reasoning
+}`,
+                  },
+                  {
+                    title: "🧠 রিজনিং API — /v1/reasoning",
+                    code: `POST https://api.frostfy.ai/v1/reasoning
 {
   "query": "একটি বরফের কিউব গলতে কত সময় লাগবে?",
   "context": "তাপমাত্রা 25°C, ভর 100 গ্রাম"
-}`}
-                    </code>
-                  </pre>
-                </div>
+}`,
+                  },
+                ].map((api) => (
+                  <div
+                    key={api.title}
+                    className="p-4 border border-oa-border rounded-lg bg-oa-bg-dark"
+                  >
+                    <h3 className="text-white font-semibold mb-2">{api.title}</h3>
+                    <pre>
+                      <code className="font-mono">{api.code}</code>
+                    </pre>
+                  </div>
+                ))}
               </div>
             </section>
 
@@ -260,14 +240,16 @@ console.log(response.output_text);`}
                         ও ভার্সন করো ওয়ার্কফ্লো Agent Builder দিয়ে, অথবা কোডের
                         মাধ্যমে নিয়ন্ত্রণ নাও Frostfy SDK ব্যবহার করে।
                       </span>
-                      <img
+                      <Image
                         src="/icons/arrow.svg"
-                        className="w-5 h-5 ml-2 text-white shrink-0"
+                        width={20}
+                        height={20}
                         alt="Arrow"
                       />
                     </div>
                   </button>
                 </div>
+
                 <div className="bg-oa-bg-dark rounded-lg border border-oa-border p-2">
                   <Image
                     src="https://cdn.openai.com/API/docs/images/builder-home-visual-dark.png"
@@ -363,14 +345,14 @@ console.log(response.output_text);`}
                     href="#"
                     className="card card-hover text-center p-6 group"
                   >
-                    <div className="relative">
-                      <div className="flex justify-center mb-2">
-                        <img
-                          src={item.icon}
-                          className="text-oa-text-secondary w-6 h-6"
-                          alt={item.title}
-                        />
-                      </div>
+                    <div className="flex flex-col items-center">
+                      <Image
+                        src={item.icon}
+                        width={24}
+                        height={24}
+                        alt={item.title}
+                        className="mb-2"
+                      />
                       <div className="font-bold text-white mb-2">
                         {item.title}
                       </div>
