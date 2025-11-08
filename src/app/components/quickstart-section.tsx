@@ -35,7 +35,52 @@ export function QuickstartSection() {
         {/* Code Example */}
         <div className="w-full">
           <Tabs defaultValue="javascript" className="w-full">
-            <TabsContent value="javascript">
+            <div className="relative rounded-t-lg bg-oa-bg-dark border border-b-0 border-oa-border p-2">
+              <div className="flex pl-2 pt-1">
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="-ml-0.5 mr-1.5 h-3 w-3 text-red-500/70"
+                >
+                  <circle r="12" cy="12" cx="12"></circle>
+                </svg>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="-ml-0.75 mr-1.5 h-3 w-3 text-yellow-500/70"
+                >
+                  <circle r="12" cy="12" cx="12"></circle>
+                </svg>
+                <svg
+                  viewBox="0 0 24 24"
+                  fill="currentColor"
+                  className="-ml-0.75 mr-1.5 h-3 w-3 text-green-500/70"
+                >
+                  <circle r="12" cy="12" cx="12"></circle>
+                </svg>
+              </div>
+              <TabsList className="absolute inset-x-0 -top-1.5 flex justify-center bg-transparent p-0 border-0">
+                <TabsTrigger
+                  value="javascript"
+                  className="text-xs text-oa-text-tertiary data-[state=active]:text-oa-text-primary data-[state=active]:bg-oa-bg-light rounded-md px-3 py-1"
+                >
+                  script.js
+                </TabsTrigger>
+                <TabsTrigger
+                  value="curl"
+                  className="text-xs text-oa-text-tertiary data-[state=active]:text-oa-text-primary data-[state=active]:bg-oa-bg-light rounded-md px-3 py-1"
+                >
+                  terminal
+                </TabsTrigger>
+                <TabsTrigger
+                  value="python"
+                  className="text-xs text-oa-text-tertiary data-[state=active]:text-oa-text-primary data-[state=active]:bg-oa-bg-light rounded-md px-3 py-1"
+                >
+                  script.py
+                </TabsTrigger>
+              </TabsList>
+            </div>
+            <TabsContent value="javascript" className="mt-0">
               <CodeSnippet
                 language="javascript"
                 code={`// একটি র‍্যান্ডম হাদিস পেতে
@@ -57,7 +102,7 @@ async function getSurahAlFatihah() {
 getSurahAlFatihah();`}
               />
             </TabsContent>
-            <TabsContent value="curl">
+            <TabsContent value="curl" className="mt-0">
               <CodeSnippet
                 language="bash"
                 code={`# একটি র‍্যান্ডম হাদিস পেতে
@@ -73,7 +118,7 @@ curl http://localhost:9002/api/quran?id=1
 curl http://localhost:9002/api/quran?random=1`}
               />
             </TabsContent>
-            <TabsContent value="python">
+            <TabsContent value="python" className="mt-0">
               <CodeSnippet
                 language="python"
                 code={`import requests
