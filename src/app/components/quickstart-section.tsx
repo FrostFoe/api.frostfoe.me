@@ -35,11 +35,37 @@ export function QuickstartSection() {
         {/* Code Example */}
         <div className="w-full">
           <Tabs defaultValue="javascript" className="w-full">
-            <TabsList className="grid w-full grid-cols-3 bg-oa-bg-dark border border-oa-border">
-              <TabsTrigger value="javascript">JavaScript</TabsTrigger>
-              <TabsTrigger value="curl">cURL</TabsTrigger>
-              <TabsTrigger value="python">Python</TabsTrigger>
-            </TabsList>
+            <div className="relative rounded-t-lg bg-oa-bg-dark border border-b-0 border-oa-border p-2">
+              <div className="relative flex text-center items-center">
+                <div className="flex pl-1.5 pt-1 gap-1.5">
+                  <span className="h-3 w-3 rounded-full bg-red-500/50"></span>
+                  <span className="h-3 w-3 rounded-full bg-yellow-500/50"></span>
+                  <span className="h-3 w-3 rounded-full bg-green-500/50"></span>
+                </div>
+                <div className="absolute inset-x-0 -top-1">
+                  <TabsList className="bg-transparent border-none p-0">
+                    <TabsTrigger
+                      value="javascript"
+                      className="text-xs data-[state=active]:bg-oa-bg-light data-[state=active]:text-white text-oa-text-tertiary"
+                    >
+                      script.js
+                    </TabsTrigger>
+                    <TabsTrigger
+                      value="curl"
+                      className="text-xs data-[state=active]:bg-oa-bg-light data-[state=active]:text-white text-oa-text-tertiary"
+                    >
+                      terminal
+                    </TabsTrigger>
+                    <TabsTrigger
+                      value="python"
+                      className="text-xs data-[state=active]:bg-oa-bg-light data-[state=active]:text-white text-oa-text-tertiary"
+                    >
+                      script.py
+                    </TabsTrigger>
+                  </TabsList>
+                </div>
+              </div>
+            </div>
             <TabsContent value="javascript">
               <CodeSnippet
                 language="javascript"
