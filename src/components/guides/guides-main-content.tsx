@@ -70,34 +70,34 @@ export function GuidesMainContent() {
         <h2 className="text-2xl font-semibold text-white mb-4">
           সেরা অনুশীলন (Best Practices)
         </h2>
-        <ul className="list-disc list-inside text-oa-text-secondary space-y-3">
-          <li>
-            <span className="font-semibold text-white">ক্যাশিং:</span> ঘন ঘন
-            একই অনুরোধ পাঠানোর পরিবর্তে প্রতিক্রিয়াগুলো ক্যাশ করে রাখুন, বিশেষ করে
-            যে ডেটা খুব বেশি পরিবর্তন হয় না।
-          </li>
-          <li>
-            <span className="font-semibold text-white">ত্রুটি পরিচালনা:</span>{" "}
-            আপনার অ্যাপ্লিকেশনে একটি শক্তিশালী ট্রাই-ক্যাচ (try-catch) ব্লক
-            এবং রিট্রাই (retry) লজিক ব্যবহার করুন, বিশেষ করে নেটওয়ার্ক
-            সমস্যার জন্য।
-          </li>
-          <li>
-            <span className="font-semibold text-white">
-              নিরাপত্তা:
-            </span>{" "}
-            আপনার API কী ক্লায়েন্ট-সাইড কোডে (যেমন, ব্রাউজারে) সরাসরি প্রকাশ
-            করবেন না। এটি একটি নিরাপদ সার্ভারে সংরক্ষণ করুন এবং সেখান থেকে
-            অনুরোধ পাঠান।
-          </li>
-          <li>
-            <span className="font-semibold text-white">
-              অ্যাসিঙ্ক্রোনাস অনুরোধ:
-            </span>{" "}
-            দীর্ঘ সময় ধরে চলমান অনুরোধগুলোর জন্য অ্যাসিঙ্ক্রোনাস প্যাটার্ন
-            ব্যবহার করুন, যাতে আপনার অ্যাপ্লিকেশন ব্লক হয়ে না যায়।
-          </li>
-        </ul>
+        <div className="text-oa-text-secondary space-y-3">
+          <ul className="list-disc list-inside space-y-3">
+            <li>
+              <span className="font-semibold text-white">ক্যাশিং:</span> ঘন ঘন
+              একই অনুরোধ পাঠানোর পরিবর্তে প্রতিক্রিয়াগুলো ক্যাশ করে রাখুন, বিশেষ করে
+              যে ডেটা খুব বেশি পরিবর্তন হয় না।
+            </li>
+            <li>
+              <span className="font-semibold text-white">ত্রুটি পরিচালনা:</span>{" "}
+              আপনার অ্যাপ্লিকেশনে একটি শক্তিশালী ট্রাই-ক্যাচ (try-catch) ব্লক
+              এবং রিট্রাই (retry) লজিক ব্যবহার করুন, বিশেষ করে নেটওয়ার্ক
+              সমস্যার জন্য।
+            </li>
+            <li>
+              <span className="font-semibold text-white">নিরাপত্তা:</span>{" "}
+              আপনার API কী ক্লায়েন্ট-সাইড কোডে (যেমন, ব্রাউজারে) সরাসরি প্রকাশ
+              করবেন না। এটি একটি নিরাপদ সার্ভারে সংরক্ষণ করুন এবং সেখান থেকে
+              অনুরোধ পাঠান।
+            </li>
+            <li>
+              <span className="font-semibold text-white">
+                অ্যাসিঙ্ক্রোনাস অনুরোধ:
+              </span>{" "}
+              দীর্ঘ সময় ধরে চলমান অনুরোধগুলোর জন্য অ্যাসিঙ্ক্রোনাস প্যাটার্ন
+              ব্যবহার করুন, যাতে আপনার অ্যাপ্লিকেশন ব্লক হয়ে না যায়।
+            </li>
+          </ul>
+        </div>
       </section>
     </>
   );
