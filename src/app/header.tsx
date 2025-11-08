@@ -31,10 +31,6 @@ export function Header() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="left" className="p-0 w-64 bg-oa-dark border-r-oa-border">
-                <SheetTitle className="sr-only">Menu</SheetTitle>
-                <SheetDescription className="sr-only">
-                  Main navigation menu
-                </SheetDescription>
                 <EnhancedSidebar isSheet={true} />
               </SheetContent>
             </Sheet>

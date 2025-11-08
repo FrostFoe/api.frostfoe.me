@@ -22,9 +22,7 @@ export default function Page() {
         />
 
         <main className="p-4 sm:p-6 md:p-8">
-          <div className="max-w-5xl mx-auto">
-            <LandingContent />
-          </div>
+          <LandingContent />
         </main>
         
         <footer className="py-8 border-t border-oa-border">
