@@ -1,6 +1,7 @@
 "use client";
 
 import { Header } from "./components/header";
+import { QuickstartSection } from "./components/quickstart-section";
 import { AgentKitSection } from "./components/agent-kit-section";
 import { ModelsSection } from "./components/models-section";
 import { FooterSection } from "./components/footer-section";
@@ -26,6 +27,7 @@ export default function Page() {
 
         <main className="p-4 sm:p-6 md:p-8">
           <div className="max-w-5xl mx-auto">
+            <QuickstartSection />
             <AgentKitSection />
             <ModelsSection />
             <HadithApiSection />
