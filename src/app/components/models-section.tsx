@@ -46,7 +46,7 @@ function ModelCard({ model }: { model: Model }) {
 
 export function ModelsSection() {
   return (
-    <section className="mb-16">
+    <section id="models" className="mb-16 scroll-mt-20">
       <div className="flex items-center justify-between mb-6">
         <h2 className="text-lg font-semibold text-white">মডেল ব্রাউজ করো</h2>
         <Link
@@ -57,7 +57,7 @@ export function ModelsSection() {
         </Link>
       </div>
 
-      <div className="grid md:grid-cols-3 gap-4">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {MODELS.map((model) => (
           <ModelCard key={model.name} model={model} />
         ))}

@@ -8,7 +8,7 @@ export function AgentKitSection() {
       <h2 className="text-2xl font-semibold text-white mb-6">
         ফ্রস্টফয় এজেন্টকিট দিয়ে তৈরি করো
       </h2>
-      <div className="grid md:grid-cols-2 gap-6">
+      <div className="grid lg:grid-cols-2 gap-6">
         <div>
           <div className="space-y-3 mb-6">
             <button className="btn w-full text-left btn-secondary">
@@ -28,7 +28,7 @@ export function AgentKitSection() {
                 ও ভার্সন করো ওয়ার্কফ্লো Agent Builder দিয়ে, অথবা কোডের
                 মাধ্যমে নিয়ন্ত্রণ নাও Frostfy SDK ব্যবহার করে।
               </span>
-              <ArrowRight className="h-5 w-5" />
+              <ArrowRight className="h-5 w-5 shrink-0 ml-2" />
             </div>
           </button>
         </div>

@@ -98,7 +98,7 @@ export function EnhancedSidebar({ isSheet = false }: EnhancedSidebarProps) {
   return (
     <aside
       className={cn(
-        "bg-oa-dark p-4 flex flex-col z-10 overflow-y-auto",
+        "bg-oa-dark p-4 flex flex-col z-20 overflow-y-auto",
         isSheet
           ? "w-full h-full"
           : "w-64 fixed top-0 left-0 h-full border-r border-oa-border hidden md:flex",

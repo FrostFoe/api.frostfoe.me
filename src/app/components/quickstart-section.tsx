@@ -1,17 +1,16 @@
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { Tabs } from "./tabs";
 import { CodeSnippet } from "./code-snippet";
 
 export function QuickstartSection() {
   return (
-    <section className="mb-16">
-      <h1 className="text-4xl font-bold text-white mb-6">
+    <section id="introduction" className="mb-16 scroll-mt-20">
+      <h1 className="text-3xl md:text-4xl font-bold text-white mb-6">
         ফ্রস্টফয় এপিআই প্ল্যাটফর্ম
       </h1>
 
-      <div className="grid md:grid-cols-2 gap-6 items-start">
+      <div className="grid lg:grid-cols-2 gap-8 items-start">
         <div className="flex flex-col justify-center">
           <h2 className="text-lg font-semibold text-white">
             ডেভেলপার কুইকস্টার্ট
@@ -22,7 +21,7 @@ export function QuickstartSection() {
           </p>
           <Link
             href="#"
-            className="inline-block btn btn-primary px-6 py-2.5 text-base"
+            className="inline-block btn btn-primary px-6 py-2.5 text-base w-full sm:w-auto text-center"
           >
             শুরু করো
           </Link>
