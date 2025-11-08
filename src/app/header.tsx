@@ -8,7 +8,7 @@ import {
   SheetContent,
   SheetTrigger,
 } from "@/components/ui/sheet";
-import { EnhancedSidebar } from "./enhanced-sidebar";
+import { EnhancedSidebar } from "./components/enhanced-sidebar";
 import { Button } from "@/components/ui/button";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
@@ -43,11 +43,8 @@ export function Header() {
             >
               ডকুমেন্টেশন
             </Link>
-            <Link href="/introduction" className={cn(
-                "main-nav-link",
-                pathname.startsWith('/introduction') && "main-nav-link-active"
-              )}>
-              শুরু করুন
+            <Link href="/#api-reference" className={cn("main-nav-link")}>
+              এপিআই রেফারেন্স
             </Link>
           </nav>
         </div>

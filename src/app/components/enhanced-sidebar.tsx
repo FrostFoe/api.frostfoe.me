@@ -36,10 +36,10 @@ const navSections: NavSection[] = [
     title: "শুরু করুন",
     icon: Rocket,
     items: [
-      { label: "ভূমিকা", href: "/introduction" },
-      { label: "ইনস্টলেশন", href: "/introduction#installation" },
-      { label: "অথেন্টিকেশন", href: "/introduction#authentication" },
-      { label: "আপনার প্রথম অনুরোধ", href: "/introduction#first-request" },
+      { label: "ভূমিকা", href: "/#introduction" },
+      { label: "ইনস্টলেশন", href: "/#installation" },
+      { label: "অথেন্টিকেশন", href: "/#authentication" },
+      { label: "আপনার প্রথম অনুরোধ", href: "/#first-request" },
     ],
   },
   {
@@ -98,8 +98,9 @@ export function EnhancedSidebar({ isSheet = false }: EnhancedSidebarProps) {
   };
 
   const isActive = (href: string) => {
-    if (href === "/") return pathname === "/";
-    return pathname.startsWith(href);
+    const cleanHref = href.split('#')[0];
+    if (cleanHref === "/") return pathname === "/";
+    return pathname.startsWith(cleanHref);
   };
 
   return (
