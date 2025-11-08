@@ -70,7 +70,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <main className="pt-24">{children}</main>
+          <main>{children}</main>
           <Toaster />
         </ThemeProvider>
       </body>
