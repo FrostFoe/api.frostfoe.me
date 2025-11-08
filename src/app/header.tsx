@@ -43,7 +43,13 @@ export function Header() {
             >
               ডকুমেন্টেশন
             </Link>
-            <Link href="/#api-reference" className={cn("main-nav-link")}>
+            <Link 
+              href="/api-reference" 
+              className={cn(
+                "main-nav-link",
+                pathname.startsWith("/api-reference") && "main-nav-link-active"
+              )}
+            >
               এপিআই রেফারেন্স
             </Link>
           </nav>

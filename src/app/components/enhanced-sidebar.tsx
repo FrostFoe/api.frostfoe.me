@@ -47,10 +47,10 @@ const navSections: NavSection[] = [
     title: "এপিআই রেফারেন্স",
     icon: Book,
     items: [
-      { label: "চ্যাট এপিআই", href: "/#chat-api" },
-      { label: "হাদিস এপিআই", href: "/#hadith-api" },
-      { label: "কুরআন এপিআই", href: "/#quran-api" },
-      { label: "মডেলসমূহ", href: "/#models" },
+      { label: "চ্যাট এপিআই", href: "/api-reference#chat-api" },
+      { label: "হাদিস এপিআই", href: "/api-reference#hadith-api" },
+      { label: "কুরআন এপিআই", href: "/api-reference#quran-api" },
+      { label: "মডেলসমূহ", href: "/api-reference#models" },
     ],
   },
   {
@@ -99,9 +99,10 @@ export function EnhancedSidebar({ isSheet = false }: EnhancedSidebarProps) {
 
   const isActive = (href: string) => {
     const cleanHref = href.split('#')[0];
+    // Special case for root, which should only be active if it's exactly "/"
     if (cleanHref === "/") return pathname === "/";
     // For other paths, check if the pathname starts with the href
-    return pathname.startsWith(cleanHref) && cleanHref !== "/";
+    return pathname.startsWith(cleanHref);
   };
 
   return (
