@@ -63,7 +63,10 @@ export default function RootLayout({
       className={`${poppins.variable} ${hindSiliguri.variable} ${lateef.variable} scroll-smooth`}
       suppressHydrationWarning
     >
-      <body className="antialiased bg-gray-50 dark:bg-gray-900 transition-colors duration-300 font-bengali">
+      <body
+        className="antialiased bg-gray-50 dark:bg-gray-900 transition-colors duration-300 font-bengali"
+        suppressHydrationWarning
+      >
         <ThemeProvider
           attribute="class"
           defaultTheme="system"
