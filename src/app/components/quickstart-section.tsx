@@ -35,15 +35,6 @@ export function QuickstartSection() {
         {/* Code Example */}
         <div className="w-full">
           <Tabs defaultValue="javascript" className="w-full">
-            <div className="relative rounded-t-lg bg-oa-bg-dark border border-b-0 border-oa-border p-2">
-              <div className="relative flex text-center items-center">
-                <div className="flex pl-1.5 pt-1 gap-1.5">
-                  <span className="h-3 w-3 rounded-full bg-red-500/50"></span>
-                  <span className="h-3 w-3 rounded-full bg-yellow-500/50"></span>
-                  <span className="h-3 w-3 rounded-full bg-green-500/50"></span>
-                </div>
-              </div>
-            </div>
             <TabsContent value="javascript">
               <CodeSnippet
                 language="javascript"
