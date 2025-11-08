@@ -166,16 +166,23 @@ body {
   border-radius: 0.5rem;
   font-weight: 500;
   transition:
-    color 150ms ease,
-    background-color 150ms ease,
-    border-color 150ms ease;
+    color 200ms ease,
+    background-color 200ms ease,
+    border-color 200ms ease,
+    transform 200ms ease;
 }
+.btn:hover {
+    transform: translateY(-2px);
+}
+
 .btn-primary {
   background-color: #ffffff;
   color: #000000;
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1), 0 1px 2px 0 rgba(0,0,0,0.06);
 }
 .btn-primary:hover {
   background-color: #e5e7eb;
+  box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
 }
 .btn-secondary {
   background-color: var(--oa-bg-light);
@@ -189,6 +196,7 @@ body {
 }
 .btn-ghost:hover {
   color: var(--oa-text-primary);
+  transform: translateY(0); /* No lift for ghost buttons */
 }
 
 /* Card styles */
@@ -198,8 +206,9 @@ body {
   border-radius: 0.75rem;
   padding: 1rem;
   transition:
-    border-color 150ms ease,
-    background-color 150ms ease;
+    border-color 200ms ease,
+    background-color 200ms ease,
+    transform 200ms ease;
 }
 .card-hover {
   cursor: pointer;
@@ -207,6 +216,7 @@ body {
 .card-hover:hover {
   border-color: var(--oa-text-tertiary);
   background-color: var(--oa-bg-light);
+  transform: translateY(-4px);
 }
 
 /* Sidebar link styles */
@@ -218,8 +228,8 @@ body {
   border-radius: 0.75rem;
   color: var(--oa-text-secondary);
   transition:
-    color 150ms ease,
-    background-color 150ms ease;
+    color 200ms ease,
+    background-color 200ms ease;
 }
 .sidebar-link:hover {
   color: var(--oa-text-primary);
@@ -238,8 +248,8 @@ body {
   font-weight: 500;
   color: var(--oa-text-secondary);
   transition:
-    color 150ms ease,
-    background-color 150ms ease;
+    color 200ms ease,
+    background-color 200ms ease;
 }
 .main-nav-link:hover {
   color: var(--oa-text-primary);
