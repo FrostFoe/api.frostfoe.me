@@ -24,12 +24,6 @@ export default function Page() {
         <main className="p-4 sm:p-6 md:p-8">
           <LandingContent />
         </main>
-        
-        <footer className="py-8 border-t border-oa-border">
-          <div className="max-w-5xl mx-auto px-4 sm:px-6 md:px-8 text-center text-sm text-oa-text-tertiary">
-            Made with 🤍 with Next.js
-          </div>
-        </footer>
       </div>
     </div>
   );
