@@ -33,7 +33,7 @@ export function CodeSnippet({
     lineHeight: '1.5',
     borderRadius: '0 0 0.5rem 0.5rem',
     whiteSpace: 'pre-wrap', 
-    wordWrap: 'break-word',
+    wordWrap: 'break-word' as const,
   };
 
   return (
