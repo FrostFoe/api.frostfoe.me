@@ -1,6 +1,11 @@
-import { CodeSnippet } from "@/components/code-snippet";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Terminal } from "lucide-react";
+import dynamic from "next/dynamic";
+
+const CodeSnippet = dynamic(() => import("@/components/code-snippet"), {
+  ssr: false,
+});
+
 
 export function GuidesMainContent() {
   const errorCodeExample = `{

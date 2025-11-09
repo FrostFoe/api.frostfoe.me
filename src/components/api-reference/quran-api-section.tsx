@@ -1,5 +1,4 @@
 import React from "react";
-import { CodeSnippet } from "@/components/code-snippet";
 import { HttpBadge } from "@/components/shared/http-badge";
 import {
   Card,
@@ -15,6 +14,12 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import dynamic from "next/dynamic";
+
+const CodeSnippet = dynamic(() => import("@/components/code-snippet"), {
+  ssr: false,
+});
+
 
 const quranParams = [
   {

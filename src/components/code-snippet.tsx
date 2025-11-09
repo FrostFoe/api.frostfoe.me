@@ -11,7 +11,7 @@ interface CodeSnippetProps {
   showLineNumbers?: boolean;
 }
 
-export function CodeSnippet({
+export default function CodeSnippet({
   code,
   language,
   showLineNumbers = true,

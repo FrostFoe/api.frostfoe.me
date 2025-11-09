@@ -1,6 +1,11 @@
 import React from "react";
 import { QuickstartSection } from "@/components/landing/quickstart-section";
-import { CodeSnippet } from "@/components/code-snippet";
+import dynamic from "next/dynamic";
+
+const CodeSnippet = dynamic(() => import("@/components/code-snippet"), {
+  ssr: false,
+});
+
 
 export function LandingContent() {
   const authExample = `const response = await fetch('https://api.frostfoe.ai/v1/hadith', {
