@@ -1,6 +1,33 @@
 import React from "react";
 import { HttpBadge } from "@/app/components/http-badge";
 import { CodeSnippet } from "@/app/components/code-snippet";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+
+const quranParams = [
+  {
+    param: "id",
+    type: "number",
+    desc: "নির্দিষ্ট সূরার তথ্য পেতে সূরার আইডি দিন (যেমন, `id=1`)।",
+  },
+  {
+    param: "random",
+    type: "boolean",
+    desc: "একটি র‍্যান্ডম আয়াত পেতে `true` সেট করুন।",
+  },
+];
 
 export function QuranApiSection() {
   return (
@@ -11,6 +38,32 @@ export function QuranApiSection() {
       </p>
 
       <div className="space-y-8">
+        <Card>
+          <CardHeader>
+            <CardTitle>এন্ডপয়েন্ট প্যারামিটার</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>প্যারামিটার</TableHead>
+                  <TableHead>টাইপ</TableHead>
+                  <TableHead>বর্ণনা</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {quranParams.map((p) => (
+                  <TableRow key={p.param}>
+                    <TableCell className="font-mono">{p.param}</TableCell>
+                    <TableCell className="font-mono">{p.type}</TableCell>
+                    <TableCell>{p.desc}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </CardContent>
+        </Card>
+
         <div>
           <h3 className="text-lg font-semibold text-white mb-2">
             সমস্ত সূরার তালিকা
@@ -18,8 +71,8 @@ export function QuranApiSection() {
           <p className="text-sm text-oa-text-secondary mb-4">
             কুরআনের ১১৪টি সূরার একটি তালিকা পেতে, কোনো ক্যোয়ারী প্যারামিটার ছাড়াই অনুরোধ করুন। প্রতিটি সূরার নাম, অনুবাদ, এবং মোট আয়াত সংখ্যা অন্তর্ভুক্ত থাকবে।
           </p>
-          <div className="card !p-0">
-            <div className="p-4 border-b border-oa-border">
+          <div className="rounded-lg border bg-card text-card-foreground shadow-sm">
+            <div className="p-4 border-b">
               <HttpBadge method="GET" endpoint="/api/quran" />
             </div>
             <CodeSnippet
@@ -57,8 +110,8 @@ export function QuranApiSection() {
           <p className="text-sm text-oa-text-secondary mb-4">
             একটি নির্দিষ্ট সূরা এবং তার সমস্ত আয়াত (আরবি, উচ্চারণ, এবং অনুবাদ সহ) পেতে `id` প্যারামিটার ব্যবহার করুন।
           </p>
-          <div className="card !p-0">
-            <div className="p-4 border-b border-oa-border">
+          <div className="rounded-lg border bg-card text-card-foreground shadow-sm">
+            <div className="p-4 border-b">
               <HttpBadge method="GET" endpoint="/api/quran?id=1" />
             </div>
             <CodeSnippet
@@ -93,8 +146,8 @@ export function QuranApiSection() {
           <p className="text-sm text-oa-text-secondary mb-4">
             কুরআন থেকে একটি দৈবচয়ন করা আয়াত পেতে `random=true` প্যারামিটার ব্যবহার করুন। এটি 'দিনের আয়াত' ফিচার তৈরির জন্য খুবই উপযোগী।
           </p>
-          <div className="card !p-0">
-            <div className="p-4 border-b border-oa-border">
+          <div className="rounded-lg border bg-card text-card-foreground shadow-sm">
+            <div className="p-4 border-b">
               <HttpBadge method="GET" endpoint="/api/quran?random=true" />
             </div>
             <CodeSnippet

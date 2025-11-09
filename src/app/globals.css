@@ -103,23 +103,68 @@
   color utility to any element that depends on these defaults.
 */
 @layer base {
+  :root {
+    --background: 224 71.4% 4.1%;
+    --foreground: 210 20% 98%;
+    --card: 224 71.4% 4.1%;
+    --card-foreground: 210 20% 98%;
+    --popover: 224 71.4% 4.1%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 210 20% 98%;
+    --primary-foreground: 220.9 39.3% 11%;
+    --secondary: 215 27.9% 16.9%;
+    --secondary-foreground: 210 20% 98%;
+    --muted: 215 27.9% 16.9%;
+    --muted-foreground: 215 25% 65.1%;
+    --accent: 215 27.9% 16.9%;
+    --accent-foreground: 210 20% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 215 27.9% 16.9%;
+    --input: 215 27.9% 16.9%;
+    --ring: 216 34% 96.5%;
+    --radius: 0.5rem;
+  }
+ 
+  .dark {
+    --background: 224 71.4% 4.1%;
+    --foreground: 210 20% 98%;
+    --card: 224 71.4% 4.1%;
+    --card-foreground: 210 20% 98%;
+    --popover: 224 71.4% 4.1%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 210 20% 98%;
+    --primary-foreground: 220.9 39.3% 11%;
+    --secondary: 215 27.9% 16.9%;
+    --secondary-foreground: 210 20% 98%;
+    --muted: 215 27.9% 16.9%;
+    --muted-foreground: 215 25% 65.1%;
+    --accent: 215 27.9% 16.9%;
+    --accent-foreground: 210 20% 98%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 20% 98%;
+    --border: 215 27.9% 16.9%;
+    --input: 215 27.9% 16.9%;
+    --ring: 216 34% 96.5%;
+  }
+
   *,
   ::after,
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
+    border-color: var(--color-border);
   }
 }
 
 :root {
-  --oa-dark: #06070f;
-  --oa-bg-dark: #101828;
-  --oa-bg-light: #1f2937;
-  --oa-border: #262c3a;
-  --oa-text-primary: #f8fafc;
-  --oa-text-secondary: #a3adc2;
-  --oa-text-tertiary: #7c8599;
+  --oa-dark: hsl(var(--background));
+  --oa-bg-dark: #101828; /* This is a custom color, should I use a shadcn var? */
+  --oa-bg-light: hsl(var(--secondary));
+  --oa-border: hsl(var(--border));
+  --oa-text-primary: hsl(var(--foreground));
+  --oa-text-secondary: hsl(var(--muted-foreground));
+  --oa-text-tertiary: #7c8599; /* This is a custom color, should I use a shadcn var? */
 }
 
 /* Base styles */
@@ -176,20 +221,20 @@ body {
 }
 
 .btn-primary {
-  background-color: #ffffff;
-  color: #000000;
+  background-color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
   box-shadow: 0 1px 3px 0 rgba(0,0,0,0.1), 0 1px 2px 0 rgba(0,0,0,0.06);
 }
 .btn-primary:hover {
-  background-color: #e5e7eb;
+  background-color: hsl(var(--primary) / 0.9);
   box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);
 }
 .btn-secondary {
-  background-color: var(--oa-bg-light);
-  color: #ffffff;
+  background-color: hsl(var(--secondary));
+  color: hsl(var(--secondary-foreground));
 }
 .btn-secondary:hover {
-  background-color: #313c52;
+  background-color: hsl(var(--secondary) / 0.8);
 }
 .btn-ghost {
   color: var(--oa-text-secondary);
@@ -200,16 +245,6 @@ body {
 }
 
 /* Card styles */
-.card {
-  background-color: var(--oa-bg-dark);
-  border: 1px solid var(--oa-border);
-  border-radius: 0.75rem;
-  padding: 1rem;
-  transition:
-    border-color 200ms ease,
-    background-color 200ms ease,
-    transform 200ms ease;
-}
 .card-hover {
   cursor: pointer;
 }

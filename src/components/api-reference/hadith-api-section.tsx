@@ -1,6 +1,43 @@
 import React from "react";
 import { HttpBadge } from "@/app/components/http-badge";
 import { CodeSnippet } from "@/app/components/code-snippet";
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
+import {
+  Table,
+  TableBody,
+  TableCell,
+  TableHead,
+  TableHeader,
+  TableRow,
+} from "@/components/ui/table";
+
+const hadithParams = [
+  {
+    param: "random",
+    type: "boolean",
+    desc: "একটি র‍্যান্ডম হাদিস পেতে `true` সেট করুন।",
+  },
+  {
+    param: "limit",
+    type: "number",
+    desc: "নির্দিষ্ট সংখ্যক হাদিস পেতে সংখ্যা দিন (যেমন, `limit=5`)।",
+  },
+  {
+    param: "search",
+    type: "string",
+    desc: "হাদিসের বিষয়বস্তু বা লেখকের নাম দিয়ে অনুসন্ধান করুন।",
+  },
+  {
+    param: "author",
+    type: "string",
+    desc: "নির্দিষ্ট লেখকের হাদিস খুঁজতে লেখকের নাম দিন।",
+  },
+];
 
 export function HadithApiSection() {
   return (
@@ -11,6 +48,32 @@ export function HadithApiSection() {
       </p>
 
       <div className="space-y-8">
+        <Card>
+          <CardHeader>
+            <CardTitle>এন্ডপয়েন্ট প্যারামিটার</CardTitle>
+          </CardHeader>
+          <CardContent>
+            <Table>
+              <TableHeader>
+                <TableRow>
+                  <TableHead>প্যারামিটার</TableHead>
+                  <TableHead>টাইপ</TableHead>
+                  <TableHead>বর্ণনা</TableHead>
+                </TableRow>
+              </TableHeader>
+              <TableBody>
+                {hadithParams.map((p) => (
+                  <TableRow key={p.param}>
+                    <TableCell className="font-mono">{p.param}</TableCell>
+                    <TableCell className="font-mono">{p.type}</TableCell>
+                    <TableCell>{p.desc}</TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          </CardContent>
+        </Card>
+
         <div>
           <h3 className="text-lg font-semibold text-white mb-2">
             একটি র‍্যান্ডম হাদিস পান
@@ -18,8 +81,8 @@ export function HadithApiSection() {
           <p className="text-sm text-oa-text-secondary mb-4">
             একটি দৈবচয়ন করা হাদিস পেতে, `random=true` ক্যোয়ারী প্যারামিটার ব্যবহার করুন। এটি প্রতিদিনের হাদিস বা অনুপ্রেরণামূলক উক্তির জন্য চমৎকার।
           </p>
-          <div className="card !p-0">
-            <div className="p-4 border-b border-oa-border">
+          <div className="rounded-lg border bg-card text-card-foreground shadow-sm">
+            <div className="p-4 border-b">
               <HttpBadge method="GET" endpoint="/api/hadith?random=true" />
             </div>
             <CodeSnippet
@@ -47,8 +110,8 @@ export function HadithApiSection() {
           <p className="text-sm text-oa-text-secondary mb-4">
             নির্দিষ্ট সংখ্যক হাদিস পেতে `limit` প্যারামিটার ব্যবহার করুন। এটি তালিকা বা ফিড তৈরির জন্য উপযোগী।
           </p>
-          <div className="card !p-0">
-            <div className="p-4 border-b border-oa-border">
+          <div className="rounded-lg border bg-card text-card-foreground shadow-sm">
+            <div className="p-4 border-b">
               <HttpBadge method="GET" endpoint="/api/hadith?limit=2" />
             </div>
             <CodeSnippet
@@ -82,8 +145,8 @@ export function HadithApiSection() {
           <p className="text-sm text-oa-text-secondary mb-4">
             নির্দিষ্ট শব্দ বা লেখকের উপর ভিত্তি করে হাদিস খুঁজতে `search` বা `author` প্যারামিটার ব্যবহার করুন।
           </p>
-          <div className="card !p-0 mb-4">
-            <div className="p-4 border-b border-oa-border">
+          <div className="rounded-lg border bg-card text-card-foreground shadow-sm mb-4">
+            <div className="p-4 border-b">
               <HttpBadge method="GET" endpoint="/api/hadith?author=মুসলিম" />
             </div>
             <CodeSnippet
@@ -105,8 +168,8 @@ export function HadithApiSection() {
 }`}
             />
           </div>
-           <div className="card !p-0">
-            <div className="p-4 border-b border-oa-border">
+           <div className="rounded-lg border bg-card text-card-foreground shadow-sm">
+            <div className="p-4 border-b">
               <HttpBadge method="GET" endpoint="/api/hadith?search=ঈমান" />
             </div>
             <CodeSnippet

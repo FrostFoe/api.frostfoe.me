@@ -1,4 +1,6 @@
 import { CodeSnippet } from "@/app/components/code-snippet";
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
+import { Terminal } from "lucide-react";
 
 export function GuidesMainContent() {
   const errorCodeExample = `{
@@ -49,8 +51,8 @@ export function GuidesMainContent() {
         <p className="text-oa-text-secondary mb-6">
           একটি স্থিতিশীল অ্যাপ্লিকেশন তৈরির জন্য সঠিক ত্রুটি ব্যবস্থাপনা অপরিহার্য। আমাদের এপিআই স্ট্যান্ডার্ড HTTP স্ট্যাটাস কোড ব্যবহার করে। 4xx রেঞ্জের কোড ক্লায়েন্ট-সাইড ত্রুটি (যেমন, ভুল ইনপুট) এবং 5xx রেঞ্জের কোড সার্ভার-সাইড সমস্যা নির্দেশ করে। প্রতিটি ত্রুটির সাথে একটি তথ্যবহুল JSON অবজেক্ট প্রদান করা হয়।
         </p>
-        <div className="card !p-0">
-          <div className="p-4 border-b border-oa-border">
+        <div className="rounded-lg border bg-card text-card-foreground shadow-sm">
+          <div className="p-4 border-b">
             <span className="text-sm text-oa-text-secondary">
               উদাহরণ ত্রুটি প্রতিক্রিয়া (401 Unauthorized)
             </span>
@@ -67,12 +69,13 @@ export function GuidesMainContent() {
         <h2 className="text-2xl font-semibold text-white mb-4">
           রেট লিমিট (Rate Limiting)
         </h2>
-        <p className="text-oa-text-secondary mb-4">
-          আমাদের প্ল্যাটফর্মের অপব্যবহার রোধ করতে এবং সকল ব্যবহারকারীর জন্য স্থিতিশীল পরিষেবা নিশ্চিত করতে রেট লিমিটিং প্রয়োগ করা হয়। আপনার প্ল্যান অনুযায়ী প্রতি মিনিটে নির্দিষ্ট সংখ্যক অনুরোধের সীমা নির্ধারণ করা আছে। এই সীমা অতিক্রম করলে আপনি `429 Too Many Requests` স্ট্যাটাস কোড পাবেন।
-        </p>
-        <p className="text-oa-text-secondary">
-          রেসপন্স হেডারে (`X-RateLimit-Limit`, `X-RateLimit-Remaining`, `X-RateLimit-Reset`) আপনি আপনার বর্তমান লিমিট সম্পর্কে রিয়েল-টাইম তথ্য পাবেন, যা আপনাকে আপনার অনুরোধগুলো আরও কার্যকরভাবে পরিচালনা করতে সাহায্য করবে।
-        </p>
+         <Alert>
+          <Terminal className="h-4 w-4" />
+          <AlertTitle>HTTP 429 Too Many Requests</AlertTitle>
+          <AlertDescription>
+            আপনার প্ল্যান অনুযায়ী প্রতি মিনিটে নির্দিষ্ট সংখ্যক অনুরোধের সীমা অতিক্রম করলে আপনি `429 Too Many Requests` স্ট্যাটাস কোড পাবেন। রেসপন্স হেডারে (`X-RateLimit-Limit`, `X-RateLimit-Remaining`, `X-RateLimit-Reset`) আপনি আপনার বর্তমান লিমিট সম্পর্কে রিয়েল-টাইম তথ্য পাবেন।
+          </AlertDescription>
+        </Alert>
       </section>
 
       <section id="best-practices" className="mb-16 scroll-mt-20">
@@ -80,15 +83,19 @@ export function GuidesMainContent() {
           সেরা অনুশীলন (Best Practices)
         </h2>
         <div className="text-oa-text-secondary space-y-6">
-          <div>
-            <h3 className="font-semibold text-white mb-2">নিরাপত্তা</h3>
-            <p>আপনার API কী সর্বদা গোপন রাখুন। এটি ক্লায়েন্ট-সাইড কোডে (যেমন, ব্রাউজারে) সরাসরি প্রকাশ করবেন না। আপনার কী একটি নিরাপদ সার্ভার বা এনভায়রনমেন্ট ভেরিয়েবলে সংরক্ষণ করুন এবং সেখান থেকে অনুরোধ পাঠান।</p>
-          </div>
+          <Alert variant="destructive">
+            <Terminal className="h-4 w-4" />
+            <AlertTitle>নিরাপত্তা</AlertTitle>
+            <AlertDescription>
+              আপনার API কী সর্বদা গোপন রাখুন। এটি ক্লায়েন্ট-সাইড কোডে (যেমন, ব্রাউজারে) সরাসরি প্রকাশ করবেন না। আপনার কী একটি নিরাপদ সার্ভার বা এনভায়রনমেন্ট ভেরিয়েবলে সংরক্ষণ করুন এবং সেখান থেকে অনুরোধ পাঠান।
+            </AlertDescription>
+          </Alert>
+
           <div>
             <h3 className="font-semibold text-white mb-2">রিট্রাই লজিক (Retry Logic)</h3>
             <p className="mb-4">নেটওয়ার্ক বা সার্ভারজনিত ক্ষণস্থায়ী সমস্যার কারণে অনুরোধ ব্যর্থ হতে পারে। এই ধরনের ক্ষেত্রে, এক্সপোনেনশিয়াল ব্যাকঅফ (exponential backoff) সহ একটি রিট্রাই মেকানিজম ব্যবহার করা উচিত। এটি আপনার অ্যাপ্লিকেশনকে আরও সহনশীল করে তুলবে।</p>
-            <div className="card !p-0">
-              <div className="p-4 border-b border-oa-border">
+            <div className="rounded-lg border bg-card text-card-foreground shadow-sm">
+              <div className="p-4 border-b">
                 <span className="text-sm text-oa-text-secondary">
                   JavaScript এ রিট্রাই লজিকের উদাহরণ
                 </span>

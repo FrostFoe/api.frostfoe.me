@@ -10,10 +10,10 @@ import { CodeSnippet } from "@/app/components/code-snippet";
 
 export function QuickstartSection() {
     const curlCode = `# একটি র‍্যান্ডম হাদিস পান
-curl ${"`http://localhost:9002/api/hadith?random=true`"}
+curl 'http://localhost:9002/api/hadith?random=true'
 
 # সূরা ফাতিহা (id=1) সম্পর্কে তথ্য পান
-curl ${"`http://localhost:9002/api/quran?id=1`"}`;
+curl 'http://localhost:9002/api/quran?id=1'`;
 
     const jsCode = `// একটি র‍্যান্ডম হাদিস পেতে
 async function getRandomHadith() {
