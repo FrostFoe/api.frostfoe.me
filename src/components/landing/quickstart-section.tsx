@@ -9,14 +9,11 @@ import {
 import { CodeSnippet } from "@/app/components/code-snippet";
 
 export function QuickstartSection() {
-    const curlCode = `# একটি র‍্যান্ডম হাদিস পান
-curl 'http://localhost:9002/api/hadith?random=true'
+    const curlCode = `curl 'http://localhost:9002/api/hadith?random=true'
 
-# সূরা ফাতিহা (id=1) সম্পর্কে তথ্য পান
 curl 'http://localhost:9002/api/quran?id=1'`;
 
-    const jsCode = `// একটি র‍্যান্ডম হাদিস পেতে
-async function getRandomHadith() {
+    const jsCode = `async function getRandomHadith() {
   try {
     const response = await fetch('/api/hadith?random=true');
     const data = await response.json();
@@ -26,7 +23,6 @@ async function getRandomHadith() {
   }
 }
 
-// সূরা ফাতিহা'র তথ্য পেতে
 async function getSurahAlFatihah() {
   try {
     const response = await fetch('/api/quran?id=1');
@@ -45,11 +41,10 @@ import json
 
 BASE_URL = "http://localhost:9002"
 
-# একটি র‍্যান্ডম আয়াত পান
 def get_random_verse():
     try:
         response = requests.get(f"{BASE_URL}/api/quran?random=true")
-        response.raise_for_status()  # HTTP ত্রুটির জন্য exception raise করে
+        response.raise_for_status()
         verse = response.json()
         print(f"Random Verse from {verse['surah_name']}:")
         print(verse['translation_bn'])

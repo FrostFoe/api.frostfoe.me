@@ -17,14 +17,12 @@ export function GuidesMainContent() {
       if (response.ok) {
         return response.json();
       }
-      // Handle server-side errors
       if (response.status >= 500) {
         console.warn(\`Server error. Retrying in \${delay / 1000}s...\`);
         await new Promise(res => setTimeout(res, delay));
-        delay *= 2; // Exponential backoff
+        delay *= 2;
         continue;
       }
-      // Handle client-side errors (don't retry)
       const errorData = await response.json();
       throw new Error(errorData.message || 'Client-side error');
     } catch (error) {

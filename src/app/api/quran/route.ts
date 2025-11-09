@@ -3,7 +3,6 @@ import fs from "fs/promises";
 import path from "path";
 import { Surah, VerseWithSurahInfo } from "@/lib/types";
 
-// Function to get the path to the quran data directory
 const getQuranDataPath = () => {
   return path.join(process.cwd(), "src", "lib", "data", "quran");
 };
@@ -15,7 +14,6 @@ const prettyJsonResponse = (data: any, status: number = 200) => {
   });
 };
 
-// Cache data in memory
 let allSurahs: Surah[] | null = null;
 let allVerses: VerseWithSurahInfo[] | null = null;
 
@@ -60,17 +58,14 @@ async function loadQuranData() {
       return { surahs: [], verses: [] };
     }
     console.error("Failed to load Quran data:", error);
-    // Cache empty arrays on other errors
     allSurahs = [];
     allVerses = [];
     return { surahs: [], verses: [] };
   }
 }
 
-// Preload data on server start
 loadQuranData();
 
-// GET all surahs list, a specific surah, or a random verse
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const surahId = searchParams.get("id");

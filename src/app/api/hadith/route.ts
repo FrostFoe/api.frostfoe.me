@@ -3,7 +3,6 @@ import fs from "fs/promises";
 import path from "path";
 import { Hadith } from "@/lib/types";
 
-// Function to get the path to the hadith data directory
 const getHadithDataPath = () => {
   return path.join(process.cwd(), "src", "lib", "data", "hadith");
 };
@@ -15,7 +14,6 @@ const prettyJsonResponse = (data: any, status: number = 200) => {
   });
 };
 
-// Cache hadiths in memory
 let allHadiths: Hadith[] | null = null;
 
 async function loadHadiths(): Promise<Hadith[]> {
@@ -37,7 +35,6 @@ async function loadHadiths(): Promise<Hadith[]> {
         loadedHadiths.push(...hadithData);
       }
     }
-    // Remove duplicates based on id
     const uniqueHadiths = Array.from(new Map(loadedHadiths.map(h => [h.id, h])).values());
     allHadiths = uniqueHadiths.sort((a,b) => a.id - b.id);
     return allHadiths;
@@ -47,15 +44,13 @@ async function loadHadiths(): Promise<Hadith[]> {
       return allHadiths;
     }
     console.error("Failed to load hadiths:", error);
-    allHadiths = []; // Cache empty array on error
+    allHadiths = [];
     return allHadiths;
   }
 }
 
-// Preload hadiths on server start
 loadHadiths();
 
-// GET all hadiths, or a random hadith
 export async function GET(request: NextRequest) {
   const { searchParams } = new URL(request.url);
   const limit = searchParams.get("limit");

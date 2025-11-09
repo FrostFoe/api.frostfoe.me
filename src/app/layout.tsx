@@ -4,7 +4,6 @@ import "./globals.css";
 import { Toaster } from "@/components/ui/toaster";
 import { ThemeProvider } from "@/components/theme-provider";
 
-// 🎨 Font configurations
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["300", "400", "500", "600", "700"],
@@ -26,7 +25,6 @@ const lateef = Lateef({
   display: "swap",
 });
 
-// 🧠 SEO Metadata
 export const metadata: Metadata = {
   title: "ফ্রস্টফয় এপিআই — বুদ্ধিমান এজেন্ট, ছবি, অডিও ও রিজনিং মডেল",
   description:
@@ -51,7 +49,6 @@ export const metadata: Metadata = {
   },
 };
 
-// 🧩 Root Layout Component
 export default function RootLayout({
   children,
 }: Readonly<{

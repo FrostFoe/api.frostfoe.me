@@ -3,10 +3,7 @@ import { QuickstartSection } from "@/components/landing/quickstart-section";
 import { CodeSnippet } from "@/app/components/code-snippet";
 
 export function LandingContent() {
-  const authExample = `// এই এপিআইগুলো বর্তমানে ওপেন, কোনো কী প্রয়োজন নেই।
-// ভবিষ্যতে, আপনাকে এইভাবে একটি অথেন্টিকেশন হেডার পাঠাতে হতে পারে:
-
-const response = await fetch('https://api.frostfoe.ai/v1/hadith', {
+  const authExample = `const response = await fetch('https://api.frostfoe.ai/v1/hadith', {
   headers: {
     'Authorization': 'Bearer YOUR_SECRET_API_KEY'
   }

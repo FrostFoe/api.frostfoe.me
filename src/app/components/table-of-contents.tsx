@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 interface TableOfContentsItem {
   id: string;
   label: string;
-  level: number; // 2 or 3 for h2 or h3
+  level: number;
 }
 
 export function TableOfContents() {
@@ -13,7 +13,6 @@ export function TableOfContents() {
   const [activeId, setActiveId] = useState<string>("");
 
   useEffect(() => {
-    // This component is not rendered, so we can keep the logic minimal
     const headings = Array.from(
       document.querySelectorAll("main h2, main h3")
     ).map((heading) => ({
@@ -29,5 +28,5 @@ export function TableOfContents() {
 
   if (items.length === 0) return null;
 
-  return null; // Return null to hide the component
+  return null;
 }
