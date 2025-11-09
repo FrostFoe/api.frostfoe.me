@@ -14,11 +14,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import dynamic from "next/dynamic";
-
-const CodeSnippet = dynamic(() => import("@/components/code-snippet"), {
-  ssr: false,
-});
+import CodeSnippet from "@/components/code-snippet";
 
 
 const quranParams = [

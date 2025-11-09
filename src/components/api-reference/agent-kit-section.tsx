@@ -7,11 +7,7 @@ import {
   TabsTrigger,
 } from "@/components/ui/tabs";
 import { cn } from "@/lib/utils";
-import dynamic from "next/dynamic";
-
-const CodeSnippet = dynamic(() => import("@/components/code-snippet"), {
-  ssr: false,
-});
+import CodeSnippet from "@/components/code-snippet";
 
 export function AgentKitSection() {
   const fetchCode = `fetch('https://api.frostfoe.ai/v1/chat/completions', {

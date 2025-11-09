@@ -6,11 +6,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs";
-import dynamic from "next/dynamic";
-
-const CodeSnippet = dynamic(() => import("@/components/code-snippet"), {
-  ssr: false,
-});
+import CodeSnippet from "@/components/code-snippet";
 
 export function QuickstartSection() {
   const curlCode = `curl 'http://localhost:9002/api/hadith?random=true'
