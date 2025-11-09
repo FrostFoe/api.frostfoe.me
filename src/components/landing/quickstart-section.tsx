@@ -78,17 +78,20 @@ get_random_verse()`;
 
         <div className="w-full">
           <Tabs defaultValue="curl" className="w-full">
-            <div className="relative rounded-t-lg bg-oa-bg-dark border border-b-0 border-oa-border p-2">
-              <div className="flex pl-2 pt-1">
-                <svg viewBox="0 0 24 24" fill="currentColor" className="-ml-0.5 mr-1.5 h-3 w-3 text-red-500/70"><circle r="12" cy="12" cx="12"></circle></svg>
-                <svg viewBox="0 0 24 24" fill="currentColor" className="-ml-0.75 mr-1.5 h-3 w-3 text-yellow-500/70"><circle r="12" cy="12" cx="12"></circle></svg>
-                <svg viewBox="0 0 24 24" fill="currentColor" className="-ml-0.75 mr-1.5 h-3 w-3 text-green-500/70"><circle r="12" cy="12" cx="12"></circle></svg>
-              </div>
-              <TabsList className="absolute inset-x-0 -top-1.5 flex justify-center bg-transparent p-0 border-0">
-                <TabsTrigger value="curl" className="text-xs text-oa-text-tertiary data-[state=active]:text-oa-text-primary data-[state=active]:bg-oa-bg-light rounded-md px-3 py-1">cURL</TabsTrigger>
-                <TabsTrigger value="javascript" className="text-xs text-oa-text-tertiary data-[state=active]:text-oa-text-primary data-[state=active]:bg-oa-bg-light rounded-md px-3 py-1">JavaScript</TabsTrigger>
-                <TabsTrigger value="python" className="text-xs text-oa-text-tertiary data-[state=active]:text-oa-text-primary data-[state=active]:bg-oa-bg-light rounded-md px-3 py-1">Python</TabsTrigger>
-              </TabsList>
+             <div className="rounded-t-lg bg-oa-bg-dark border border-b-0 border-oa-border p-2">
+                <div className="flex items-center justify-between">
+                    <div className="flex pl-2 pt-1 gap-1.5">
+                        <span className="h-3 w-3 rounded-full bg-red-500/70"></span>
+                        <span className="h-3 w-3 rounded-full bg-yellow-500/70"></span>
+                        <span className="h-3 w-3 rounded-full bg-green-500/70"></span>
+                    </div>
+                    <TabsList className="bg-transparent p-0 border-0 h-auto">
+                        <TabsTrigger value="curl" className="text-xs text-oa-text-tertiary data-[state=active]:text-oa-text-primary data-[state=active]:bg-oa-bg-light rounded-md px-3 py-1">cURL</TabsTrigger>
+                        <TabsTrigger value="javascript" className="text-xs text-oa-text-tertiary data-[state=active]:text-oa-text-primary data-[state=active]:bg-oa-bg-light rounded-md px-3 py-1">JavaScript</TabsTrigger>
+                        <TabsTrigger value="python" className="text-xs text-oa-text-tertiary data-[state=active]:text-oa-text-primary data-[state=active]:bg-oa-bg-light rounded-md px-3 py-1">Python</TabsTrigger>
+                    </TabsList>
+                    <div className="w-1/4"></div>
+                </div>
             </div>
             <TabsContent value="curl" className="mt-0">
               <CodeSnippet language="bash" code={curlCode} />

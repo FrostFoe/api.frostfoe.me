@@ -118,9 +118,9 @@ req.end();`;
               <HttpBadge method="POST" endpoint="/v1/chat/completions" />
             </div>
             <Tabs defaultValue="javascript" className="w-full">
-               <TabsList className="bg-oa-bg-dark border-b border-oa-border rounded-none p-0">
-                <TabsTrigger value="javascript" className="text-xs data-[state=active]:bg-oa-bg-light data-[state=active]:text-white rounded-none px-4 py-2">JavaScript</TabsTrigger>
-                <TabsTrigger value="node" className="text-xs data-[state=active]:bg-oa-bg-light data-[state=active]:text-white rounded-none px-4 py-2">Node.js</TabsTrigger>
+               <TabsList className="bg-oa-bg-dark border-b border-oa-border rounded-none p-0 h-auto justify-start">
+                <TabsTrigger value="javascript" className="text-xs data-[state=active]:bg-oa-bg-light data-[state=active]:text-white rounded-none px-4 py-2 data-[state=active]:border-b-2 data-[state=active]:border-white border-b-2 border-transparent">JavaScript</TabsTrigger>
+                <TabsTrigger value="node" className="text-xs data-[state=active]:bg-oa-bg-light data-[state=active]:text-white rounded-none px-4 py-2 data-[state=active]:border-b-2 data-[state=active]:border-white border-b-2 border-transparent">Node.js</TabsTrigger>
               </TabsList>
               <TabsContent value="javascript" className="mt-0">
                 <CodeSnippet
