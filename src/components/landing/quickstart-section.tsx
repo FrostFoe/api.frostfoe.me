@@ -78,20 +78,21 @@ get_random_verse()`;
 
         <div className="w-full">
           <Tabs defaultValue="curl" className="w-full">
-             <div className="rounded-t-lg bg-oa-bg-dark border border-b-0 border-oa-border p-2">
-                <div className="flex items-center justify-between">
-                    <div className="flex pl-2 pt-1 gap-1.5">
-                        <span className="h-3 w-3 rounded-full bg-red-500/70"></span>
-                        <span className="h-3 w-3 rounded-full bg-yellow-500/70"></span>
-                        <span className="h-3 w-3 rounded-full bg-green-500/70"></span>
-                    </div>
-                    <TabsList className="bg-transparent p-0 border-0 h-auto">
-                        <TabsTrigger value="curl" className="text-xs text-oa-text-tertiary data-[state=active]:text-oa-text-primary data-[state=active]:bg-oa-bg-light rounded-md px-3 py-1">cURL</TabsTrigger>
-                        <TabsTrigger value="javascript" className="text-xs text-oa-text-tertiary data-[state=active]:text-oa-text-primary data-[state=active]:bg-oa-bg-light rounded-md px-3 py-1">JavaScript</TabsTrigger>
-                        <TabsTrigger value="python" className="text-xs text-oa-text-tertiary data-[state=active]:text-oa-text-primary data-[state=active]:bg-oa-bg-light rounded-md px-3 py-1">Python</TabsTrigger>
-                    </TabsList>
-                    <div className="w-1/4"></div>
+            <div className="rounded-t-lg bg-oa-bg-dark border border-b-0 border-oa-border p-2">
+              <div className="flex items-center">
+                <div className="hidden sm:flex pl-2 pt-1 gap-1.5">
+                  <span className="h-3 w-3 rounded-full bg-red-500/70"></span>
+                  <span className="h-3 w-3 rounded-full bg-yellow-500/70"></span>
+                  <span className="h-3 w-3 rounded-full bg-green-500/70"></span>
                 </div>
+                <div className="flex-grow flex justify-center">
+                  <TabsList className="bg-transparent p-0 border-0 h-auto">
+                    <TabsTrigger value="curl" className="text-xs text-oa-text-tertiary data-[state=active]:text-oa-text-primary data-[state=active]:bg-oa-bg-light rounded-md px-3 py-1">cURL</TabsTrigger>
+                    <TabsTrigger value="javascript" className="text-xs text-oa-text-tertiary data-[state=active]:text-oa-text-primary data-[state=active]:bg-oa-bg-light rounded-md px-3 py-1">JavaScript</TabsTrigger>
+                    <TabsTrigger value="python" className="text-xs text-oa-text-tertiary data-[state=active]:text-oa-text-primary data-[state=active]:bg-oa-bg-light rounded-md px-3 py-1">Python</TabsTrigger>
+                  </TabsList>
+                </div>
+              </div>
             </div>
             <TabsContent value="curl" className="mt-0">
               <CodeSnippet language="bash" code={curlCode} />
