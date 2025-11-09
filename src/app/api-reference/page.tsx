@@ -14,9 +14,7 @@ export default function ApiReferencePage() {
             { label: "এপিআই রেফারেন্স", href: "/api-reference" },
           ]}
         />
-        <main className="p-4 sm:p-6 md:p-8">
-          
-        </main>
+        <main className="p-4 sm:p-6 md:p-8"></main>
       </div>
     </div>
   );

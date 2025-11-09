@@ -1,7 +1,6 @@
 import { Breadcrumb } from "@/components/shared/breadcrumb";
 import { EnhancedSidebar } from "@/components/shared/enhanced-sidebar";
 import { Header } from "@/components/shared/header";
-import { LandingContent } from "@/components/landing/landing-content";
 
 export default function Page() {
   return (
@@ -15,9 +14,7 @@ export default function Page() {
             { label: "ভূমিকা", href: "/" },
           ]}
         />
-        <main className="p-4 sm:p-6 md:p-8">
-          
-        </main>
+        <main className="p-4 sm:p-6 md:p-8"></main>
       </div>
     </div>
   );

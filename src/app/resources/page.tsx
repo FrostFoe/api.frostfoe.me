@@ -14,9 +14,7 @@ export default function ResourcesPage() {
             { label: "রিসোর্স", href: "/resources" },
           ]}
         />
-        <main className="p-4 sm:p-6 md:p-8">
-          
-        </main>
+        <main className="p-4 sm:p-6 md:p-8"></main>
       </div>
     </div>
   );

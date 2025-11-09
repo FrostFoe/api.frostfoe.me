@@ -14,9 +14,7 @@ export default function GuidesPage() {
             { label: "নির্দেশিকা", href: "/guides" },
           ]}
         />
-        <main className="p-4 sm:p-6 md:p-8">
-          
-        </main>
+        <main className="p-4 sm:p-6 md:p-8"></main>
       </div>
     </div>
   );
