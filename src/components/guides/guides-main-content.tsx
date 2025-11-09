@@ -1,4 +1,4 @@
-import { CodeSnippet } from "@/app/components/code-snippet";
+import { CodeSnippet } from "@/components/code-snippet";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import { Terminal } from "lucide-react";
 

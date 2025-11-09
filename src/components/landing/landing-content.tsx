@@ -1,6 +1,6 @@
 import React from "react";
 import { QuickstartSection } from "@/components/landing/quickstart-section";
-import { CodeSnippet } from "@/app/components/code-snippet";
+import { CodeSnippet } from "@/components/code-snippet";
 
 export function LandingContent() {
   const authExample = `const response = await fetch('https://api.frostfoe.ai/v1/hadith', {

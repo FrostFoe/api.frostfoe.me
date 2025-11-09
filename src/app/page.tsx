@@ -1,9 +1,9 @@
 "use client";
 
-import { Header } from "./header";
-import { EnhancedSidebar } from "./components/enhanced-sidebar";
-import { Breadcrumb } from "./components/breadcrumb";
 import { LandingContent } from "@/components/landing/landing-content";
+import { Breadcrumb } from "@/components/shared/breadcrumb";
+import { EnhancedSidebar } from "@/components/shared/enhanced-sidebar";
+import { Header } from "@/components/shared/header";
 
 export default function Page() {
   return (

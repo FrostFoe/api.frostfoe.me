@@ -1,6 +1,6 @@
 import React from "react";
-import { HttpBadge } from "@/app/components/http-badge";
-import { CodeSnippet } from "@/app/components/code-snippet";
+import { CodeSnippet } from "@/components/code-snippet";
+import { HttpBadge } from "@/components/shared/http-badge";
 import {
   Card,
   CardContent,

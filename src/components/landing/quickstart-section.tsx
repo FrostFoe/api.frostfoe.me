@@ -6,7 +6,7 @@ import {
   TabsList,
   TabsTrigger,
 } from "@/components/ui/tabs";
-import { CodeSnippet } from "@/app/components/code-snippet";
+import { CodeSnippet } from "@/components/code-snippet";
 
 export function QuickstartSection() {
     const curlCode = `curl 'http://localhost:9002/api/hadith?random=true'
@@ -78,8 +78,8 @@ get_random_verse()`;
 
         <div className="w-full">
           <Tabs defaultValue="curl" className="w-full">
-            <div className="rounded-t-lg bg-oa-bg-dark border border-b-0 border-oa-border p-2">
-              <div className="flex items-center">
+             <div className="rounded-t-lg bg-oa-bg-dark border border-b-0 border-oa-border p-2">
+              <div className="flex items-center justify-between">
                 <div className="hidden sm:flex pl-2 pt-1 gap-1.5">
                   <span className="h-3 w-3 rounded-full bg-red-500/70"></span>
                   <span className="h-3 w-3 rounded-full bg-yellow-500/70"></span>

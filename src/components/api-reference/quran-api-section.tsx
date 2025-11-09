@@ -1,6 +1,6 @@
 import React from "react";
-import { HttpBadge } from "@/app/components/http-badge";
-import { CodeSnippet } from "@/app/components/code-snippet";
+import { CodeSnippet } from "@/components/code-snippet";
+import { HttpBadge } from "@/components/shared/http-badge";
 import {
   Card,
   CardContent,
@@ -96,7 +96,6 @@ export function QuranApiSection() {
       "total_verses": 286,
       "type": "Medinan"
     }
-    // ... remaining 112 surahs
   ]
 }`}
             />
@@ -131,8 +130,7 @@ export function QuranApiSection() {
       "transliteration": "বিছমিল্লাহির রাহমানির রাহিম।",
       "translation_bn": "শুরু করছি আল্লাহর নামে যিনি পরম করুণাময়, অতি দয়ালু।",
       "translation_en": "In the name of Allah, Most Gracious, Most Merciful."
-    },
-    // ... other 6 verses of Al-Fatihah
+    }
   ]
 }`}
             />

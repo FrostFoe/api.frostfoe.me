@@ -1,11 +1,11 @@
-import { Header } from "../header";
-import { EnhancedSidebar } from "../components/enhanced-sidebar";
-import { Breadcrumb } from "../components/breadcrumb";
 import { AgentKitSection } from "@/components/api-reference/agent-kit-section";
-import { ModelsSection } from "@/components/api-reference/models-section";
-import { HadithApiSection } from "@/components/api-reference/hadith-api-section";
-import { QuranApiSection } from "@/components/api-reference/quran-api-section";
 import { ApiReferenceFooter } from "@/components/api-reference/api-reference-footer";
+import { HadithApiSection } from "@/components/api-reference/hadith-api-section";
+import { ModelsSection } from "@/components/api-reference/models-section";
+import { QuranApiSection } from "@/components/api-reference/quran-api-section";
+import { Breadcrumb } from "@/components/shared/breadcrumb";
+import { EnhancedSidebar } from "@/components/shared/enhanced-sidebar";
+import { Header } from "@/components/shared/header";
 
 export default function ApiReferencePage() {
   return (
