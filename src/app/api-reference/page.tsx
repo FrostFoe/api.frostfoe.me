@@ -5,6 +5,7 @@ import { AgentKitSection } from "@/components/api-reference/agent-kit-section";
 import { ModelsSection } from "@/components/api-reference/models-section";
 import { HadithApiSection } from "@/components/api-reference/hadith-api-section";
 import { QuranApiSection } from "@/components/api-reference/quran-api-section";
+import { ApiReferenceFooter } from "@/components/api-reference/api-reference-footer";
 
 export default function ApiReferencePage() {
   return (
@@ -27,8 +28,7 @@ export default function ApiReferencePage() {
               এপিআই রেফারেন্স
             </h1>
             <p className="text-oa-text-secondary mb-12">
-              ফ্রস্টফয় প্ল্যাটফর্মের বিভিন্ন এপিআই সম্পর্কে বিস্তারিত তথ্য ও
-              ব্যবহারের নির্দেশিকা এখানে পাবেন।
+              ফ্রস্টফয় প্ল্যাটফর্মের প্রতিটি এপিআই-এর এন্ডপয়েন্ট, প্যারামিটার, এবং ব্যবহারবিধি সম্পর্কে বিস্তারিত জানুন। আমাদের শক্তিশালী মডেল এবং ডেটা এপিআই ব্যবহার করে আপনার অ্যাপ্লিকেশন তৈরি করুন।
             </p>
 
             <div id="chat-api" className="scroll-mt-20">
@@ -43,6 +43,7 @@ export default function ApiReferencePage() {
             <div id="quran-api" className="scroll-mt-20">
               <QuranApiSection />
             </div>
+            <ApiReferenceFooter />
           </div>
         </main>
       </div>

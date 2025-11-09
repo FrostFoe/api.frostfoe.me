@@ -1,33 +1,66 @@
+import { CodeSnippet } from "@/app/components/code-snippet";
+
 export function GuidesMainContent() {
+  const errorCodeExample = `{
+  "error": "Invalid API Key",
+  "message": "The provided API key is incorrect or has expired.",
+  "code": "AUTH_001",
+  "status": 401
+}`;
+  
+  const retryLogicExample = `async function fetchWithRetry(url, options, retries = 3, delay = 1000) {
+  for (let i = 0; i < retries; i++) {
+    try {
+      const response = await fetch(url, options);
+      if (response.ok) {
+        return response.json();
+      }
+      // Handle server-side errors
+      if (response.status >= 500) {
+        console.warn(\`Server error. Retrying in \${delay / 1000}s...\`);
+        await new Promise(res => setTimeout(res, delay));
+        delay *= 2; // Exponential backoff
+        continue;
+      }
+      // Handle client-side errors (don't retry)
+      const errorData = await response.json();
+      throw new Error(errorData.message || 'Client-side error');
+    } catch (error) {
+      if (i === retries - 1) throw error;
+      console.warn(\`Network error. Retrying...\`);
+      await new Promise(res => setTimeout(res, delay));
+    }
+  }
+}`;
+
   return (
     <>
       <h1 className="text-3xl md:text-4xl font-bold text-white mb-6">
         নির্দেশিকা
       </h1>
       <p className="text-oa-text-secondary mb-12">
-        আমাদের প্ল্যাটফর্ম ব্যবহারের জন্য গুরুত্বপূর্ণ নির্দেশিকা, যেমন ত্রুটি
-        ব্যবস্থাপনা, রেট লিমিট এবং সেরা অনুশীলন সম্পর্কে জানুন। এই গাইডগুলো
-        আপনাকে আমাদের এপিআই ব্যবহার করে আরও শক্তিশালী এবং নির্ভরযোগ্য
-        অ্যাপ্লিকেশন তৈরি করতে সাহায্য করবে।
+        আমাদের প্ল্যাটফর্ম ব্যবহার করে শক্তিশালী এবং নির্ভরযোগ্য অ্যাপ্লিকেশন তৈরির জন্য গুরুত্বপূর্ণ নির্দেশিকা এবং সেরা অনুশীলন সম্পর্কে জানুন। এই গাইডগুলো আপনাকে আমাদের এপিআই-এর সম্পূর্ণ সম্ভাবনাকে কাজে লাগাতে সাহায্য করবে।
       </p>
 
       <section id="errors" className="mb-16 scroll-mt-20">
         <h2 className="text-2xl font-semibold text-white mb-4">
           ত্রুটি ব্যবস্থাপনা (Error Handling)
         </h2>
-        <p className="text-oa-text-secondary mb-4">
-          এপিআই অনুরোধে কোনো সমস্যা হলে, আমরা স্ট্যান্ডার্ড HTTP স্ট্যাটাস
-          কোড এবং একটি তথ্যবহুল JSON অবজেক্টের মাধ্যমে প্রতিক্রিয়া জানাই।
-          সাধারণত, 4xx রেঞ্জের স্ট্যাটাস কোড ক্লায়েন্ট-সাইড ত্রুটি বোঝায়
-          (যেমন, ভুল ইনপুট, অথেন্টিকেশন সমস্যা) এবং 5xx রেঞ্জের স্ট্যাটাস কোড
-          সার্ভার-সাইড সমস্যা নির্দেশ করে।
+        <p className="text-oa-text-secondary mb-6">
+          একটি স্থিতিশীল অ্যাপ্লিকেশন তৈরির জন্য সঠিক ত্রুটি ব্যবস্থাপনা অপরিহার্য। আমাদের এপিআই স্ট্যান্ডার্ড HTTP স্ট্যাটাস কোড ব্যবহার করে। 4xx রেঞ্জের কোড ক্লায়েন্ট-সাইড ত্রুটি (যেমন, ভুল ইনপুট) এবং 5xx রেঞ্জের কোড সার্ভার-সাইড সমস্যা নির্দেশ করে। প্রতিটি ত্রুটির সাথে একটি তথ্যবহুল JSON অবজেক্ট প্রদান করা হয়।
         </p>
-        <p className="text-oa-text-secondary">
-          উদাহরণস্বরূপ, একটি `401 Unauthorized` ত্রুটি মানে আপনার API কী ভুল বা
-          অনুপস্থিত। একটি `429 Too Many Requests` মানে আপনি আপনার রেট লিমিট
-          অতিক্রম করেছেন। আপনার কোডে এই ত্রুটিগুলো সঠিকভাবে পরিচালনা করা
-          উচিত।
-        </p>
+        <div className="card !p-0">
+          <div className="p-4 border-b border-oa-border">
+            <span className="text-sm text-oa-text-secondary">
+              উদাহরণ ত্রুটি প্রতিক্রিয়া (401 Unauthorized)
+            </span>
+          </div>
+          <CodeSnippet
+            language="json"
+            showLineNumbers={false}
+            code={errorCodeExample}
+          />
+        </div>
       </section>
 
       <section id="rate-limiting" className="mb-16 scroll-mt-20">
@@ -35,34 +68,10 @@ export function GuidesMainContent() {
           রেট লিমিট (Rate Limiting)
         </h2>
         <p className="text-oa-text-secondary mb-4">
-          আমাদের এপিআই-এর অপব্যবহার রোধ করতে এবং সকল ব্যবহারকারীর জন্য
-          স্থিতিশীল পরিষেবা নিশ্চিত করতে, আমরা রেট লিমিটিং প্রয়োগ করি। আপনার
-          প্ল্যানের উপর নির্ভর করে, প্রতি মিনিটে নির্দিষ্ট সংখ্যক অনুরোধের সীমা
-          নির্ধারণ করা আছে। ফ্রি টায়ারে সাধারণত প্রতি মিনিটে ৬০টি অনুরোধের সীমা
-          থাকে।
+          আমাদের প্ল্যাটফর্মের অপব্যবহার রোধ করতে এবং সকল ব্যবহারকারীর জন্য স্থিতিশীল পরিষেবা নিশ্চিত করতে রেট লিমিটিং প্রয়োগ করা হয়। আপনার প্ল্যান অনুযায়ী প্রতি মিনিটে নির্দিষ্ট সংখ্যক অনুরোধের সীমা নির্ধারণ করা আছে। এই সীমা অতিক্রম করলে আপনি `429 Too Many Requests` স্ট্যাটাস কোড পাবেন।
         </p>
         <p className="text-oa-text-secondary">
-          রেসপন্স হেডারে (`X-RateLimit-Limit`, `X-RateLimit-Remaining`,
-          `X-RateLimit-Reset`) আপনি আপনার বর্তমান লিমিট সম্পর্কে তথ্য পাবেন।
-          এই সীমা অতিক্রম করলে আপনি `429 Too Many Requests` স্ট্যাটাস কোড
-          পাবেন।
-        </p>
-      </section>
-
-      <section id="webhooks" className="mb-16 scroll-mt-20">
-        <h2 className="text-2xl font-semibold text-white mb-4">
-          ওয়েবহুক (Webhooks)
-        </h2>
-        <p className="text-oa-text-secondary mb-4">
-          আমাদের প্ল্যাটফর্মে নির্দিষ্ট কিছু ঘটনা ঘটলে (যেমন, একটি মডেলের নতুন
-          ভার্সন রিলিজ হলে বা আপনার অ্যাকাউন্টে কোনো গুরুত্বপূর্ণ পরিবর্তন হলে)
-          আপনাকে রিয়েল-টাইমে অবহিত করার জন্য ওয়েবহুক ব্যবহার করতে পারেন।
-        </p>
-        <p className="text-oa-text-secondary">
-          ওয়েবহুক সেট আপ করার জন্য আপনার অ্যাকাউন্টের ড্যাশবোর্ড থেকে একটি
-          এন্ডপয়েন্ট ইউআরএল যোগ করতে হবে। যখন কোনো ইভেন্ট ঘটবে, আমরা আপনার
-          সরবরাহ করা URL-এ একটি POST অনুরোধ পাঠাব, যেখানে ইভেন্টের বিস্তারিত
-          তথ্য থাকবে।
+          রেসপন্স হেডারে (`X-RateLimit-Limit`, `X-RateLimit-Remaining`, `X-RateLimit-Reset`) আপনি আপনার বর্তমান লিমিট সম্পর্কে রিয়েল-টাইম তথ্য পাবেন, যা আপনাকে আপনার অনুরোধগুলো আরও কার্যকরভাবে পরিচালনা করতে সাহায্য করবে।
         </p>
       </section>
 
@@ -70,33 +79,31 @@ export function GuidesMainContent() {
         <h2 className="text-2xl font-semibold text-white mb-4">
           সেরা অনুশীলন (Best Practices)
         </h2>
-        <div className="text-oa-text-secondary space-y-3">
-          <ul className="list-disc list-inside space-y-3">
-            <li>
-              <span className="font-semibold text-white">ক্যাশিং:</span> ঘন ঘন
-              একই অনুরোধ পাঠানোর পরিবর্তে প্রতিক্রিয়াগুলো ক্যাশ করে রাখুন, বিশেষ করে
-              যে ডেটা খুব বেশি পরিবর্তন হয় না।
-            </li>
-            <li>
-              <span className="font-semibold text-white">ত্রুটি পরিচালনা:</span>{" "}
-              আপনার অ্যাপ্লিকেশনে একটি শক্তিশালী ট্রাই-ক্যাচ (try-catch) ব্লক
-              এবং রিট্রাই (retry) লজিক ব্যবহার করুন, বিশেষ করে নেটওয়ার্ক
-              সমস্যার জন্য।
-            </li>
-            <li>
-              <span className="font-semibold text-white">নিরাপত্তা:</span>{" "}
-              আপনার API কী ক্লায়েন্ট-সাইড কোডে (যেমন, ব্রাউজারে) সরাসরি প্রকাশ
-              করবেন না। এটি একটি নিরাপদ সার্ভারে সংরক্ষণ করুন এবং সেখান থেকে
-              অনুরোধ পাঠান।
-            </li>
-            <li>
-              <span className="font-semibold text-white">
-                অ্যাসিঙ্ক্রোনাস অনুরোধ:
-              </span>{" "}
-              দীর্ঘ সময় ধরে চলমান অনুরোধগুলোর জন্য অ্যাসিঙ্ক্রোনাস প্যাটার্ন
-              ব্যবহার করুন, যাতে আপনার অ্যাপ্লিকেশন ব্লক হয়ে না যায়।
-            </li>
-          </ul>
+        <div className="text-oa-text-secondary space-y-6">
+          <div>
+            <h3 className="font-semibold text-white mb-2">নিরাপত্তা</h3>
+            <p>আপনার API কী সর্বদা গোপন রাখুন। এটি ক্লায়েন্ট-সাইড কোডে (যেমন, ব্রাউজারে) সরাসরি প্রকাশ করবেন না। আপনার কী একটি নিরাপদ সার্ভার বা এনভায়রনমেন্ট ভেরিয়েবলে সংরক্ষণ করুন এবং সেখান থেকে অনুরোধ পাঠান।</p>
+          </div>
+          <div>
+            <h3 className="font-semibold text-white mb-2">রিট্রাই লজিক (Retry Logic)</h3>
+            <p className="mb-4">নেটওয়ার্ক বা সার্ভারজনিত ক্ষণস্থায়ী সমস্যার কারণে অনুরোধ ব্যর্থ হতে পারে। এই ধরনের ক্ষেত্রে, এক্সপোনেনশিয়াল ব্যাকঅফ (exponential backoff) সহ একটি রিট্রাই মেকানিজম ব্যবহার করা উচিত। এটি আপনার অ্যাপ্লিকেশনকে আরও সহনশীল করে তুলবে।</p>
+            <div className="card !p-0">
+              <div className="p-4 border-b border-oa-border">
+                <span className="text-sm text-oa-text-secondary">
+                  JavaScript এ রিট্রাই লজিকের উদাহরণ
+                </span>
+              </div>
+              <CodeSnippet
+                language="javascript"
+                showLineNumbers={true}
+                code={retryLogicExample}
+              />
+            </div>
+          </div>
+           <div>
+            <h3 className="font-semibold text-white mb-2">ক্যাশিং (Caching)</h3>
+            <p>যে ডেটা ঘন ঘন পরিবর্তন হয় না (যেমন, সূরার তালিকা), সেগুলোর জন্য ক্যাশিং ব্যবহার করুন। এটি আপনার অ্যাপ্লিকেশনের পারফরম্যান্স বাড়াবে এবং অপ্রয়োজনীয় এপিআই কল কমিয়ে আনবে।</p>
+          </div>
         </div>
       </section>
     </>

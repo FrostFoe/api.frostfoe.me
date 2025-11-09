@@ -7,19 +7,16 @@ export function QuranApiSection() {
     <section id="quran-api" className="mb-16 scroll-mt-20">
       <h2 className="text-2xl font-semibold text-white mb-4">কুরআন এপিআই</h2>
       <p className="text-oa-text-secondary mb-8">
-        কুরআনের সূরা এবং আয়াত সংক্রান্ত তথ্য পেতে এই এপিআই ব্যবহার করুন। আপনি
-        সমস্ত সূরার তালিকা, নির্দিষ্ট সূরা বা একটি র‍্যান্ডম আয়াত পেতে পারেন।
+        পবিত্র কুরআনের সূরা এবং আয়াত সংক্রান্ত তথ্য পেতে এই এপিআই ব্যবহার করুন। আপনি সমস্ত সূরার একটি তালিকা, নির্দিষ্ট সূরার বিস্তারিত তথ্য অথবা একটি দৈবচয়ন করা আয়াত পেতে পারেন।
       </p>
 
       <div className="space-y-8">
-        {/* Get all surahs */}
         <div>
           <h3 className="text-lg font-semibold text-white mb-2">
-            সমস্ত সূরার তালিকা পান
+            সমস্ত সূরার তালিকা
           </h3>
           <p className="text-sm text-oa-text-secondary mb-4">
-            কুরআনের সমস্ত সূরার একটি তালিকা পেতে, কোনো প্যারামিটার ছাড়াই অনুরোধ
-            করুন।
+            কুরআনের ১১৪টি সূরার একটি তালিকা পেতে, কোনো ক্যোয়ারী প্যারামিটার ছাড়াই অনুরোধ করুন। প্রতিটি সূরার নাম, অনুবাদ, এবং মোট আয়াত সংখ্যা অন্তর্ভুক্ত থাকবে।
           </p>
           <div className="card !p-0">
             <div className="p-4 border-b border-oa-border">
@@ -46,21 +43,19 @@ export function QuranApiSection() {
       "total_verses": 286,
       "type": "Medinan"
     }
-    // ... and so on
+    // ... remaining 112 surahs
   ]
 }`}
             />
           </div>
         </div>
 
-        {/* Get a specific surah */}
         <div>
           <h3 className="text-lg font-semibold text-white mb-2">
             একটি নির্দিষ্ট সূরা পান
           </h3>
           <p className="text-sm text-oa-text-secondary mb-4">
-            একটি নির্দিষ্ট সূরা এবং তার সমস্ত আয়াত পেতে `id` প্যারামিটার ব্যবহার
-            করুন।
+            একটি নির্দিষ্ট সূরা এবং তার সমস্ত আয়াত (আরবি, উচ্চারণ, এবং অনুবাদ সহ) পেতে `id` প্যারামিটার ব্যবহার করুন।
           </p>
           <div className="card !p-0">
             <div className="p-4 border-b border-oa-border">
@@ -84,24 +79,23 @@ export function QuranApiSection() {
       "translation_bn": "শুরু করছি আল্লাহর নামে যিনি পরম করুণাময়, অতি দয়ালু।",
       "translation_en": "In the name of Allah, Most Gracious, Most Merciful."
     },
-    // ... other verses
+    // ... other 6 verses of Al-Fatihah
   ]
 }`}
             />
           </div>
         </div>
 
-        {/* Get a random verse */}
         <div>
           <h3 className="text-lg font-semibold text-white mb-2">
             একটি র‍্যান্ডম আয়াত পান
           </h3>
           <p className="text-sm text-oa-text-secondary mb-4">
-            একটি র‍্যান্ডম আয়াত পেতে `random=1` প্যারামিটার ব্যবহার করুন।
+            কুরআন থেকে একটি দৈবচয়ন করা আয়াত পেতে `random=true` প্যারামিটার ব্যবহার করুন। এটি 'দিনের আয়াত' ফিচার তৈরির জন্য খুবই উপযোগী।
           </p>
           <div className="card !p-0">
             <div className="p-4 border-b border-oa-border">
-              <HttpBadge method="GET" endpoint="/api/quran?random=1" />
+              <HttpBadge method="GET" endpoint="/api/quran?random=true" />
             </div>
             <CodeSnippet
               language="json"
