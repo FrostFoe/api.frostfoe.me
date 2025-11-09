@@ -176,7 +176,14 @@ body {
     system-ui,
     -apple-system,
     sans-serif;
+  scrollbar-width: none; /* For Firefox */
+  -ms-overflow-style: none;  /* For Internet Explorer and Edge */
 }
+
+body::-webkit-scrollbar {
+  display: none; /* For Chrome, Safari, and Opera */
+}
+
 
 /* Utility token classes */
 .bg-oa-dark {
@@ -307,4 +314,13 @@ body {
 }
 .text-syntax-const {
   color: #f9a8d4;
+}
+
+/* Hide scrollbar for other elements that might have it */
+.overflow-y-auto::-webkit-scrollbar {
+  display: none;
+}
+.overflow-y-auto {
+  scrollbar-width: none;  /* For Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
 }
