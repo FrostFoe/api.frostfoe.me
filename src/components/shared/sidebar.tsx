@@ -14,6 +14,7 @@ import {
   Github,
   HelpCircle,
   FileText,
+  Activity,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -192,20 +193,27 @@ export function EnhancedSidebar({ isSheet = false }: EnhancedSidebarProps) {
         ))}
       </nav>
 
-      <div className="pt-4 border-t border-oa-border space-y-2">
+            <div className="pt-4 border-t border-oa-border space-y-2">
         <Link
-          href="#"
+          href="/status"
+          className="flex items-center gap-2 px-3 py-2 text-sm text-oa-text-tertiary hover:text-white hover:bg-oa-bg-dark rounded-lg transition-colors"
+        >
+          <Activity className="w-4 h-4" />
+          সিস্টেম স্ট্যাটাস
+        </Link>
+        <Link
+          href="/changelog"
           className="flex items-center gap-2 px-3 py-2 text-sm text-oa-text-tertiary hover:text-white hover:bg-oa-bg-dark rounded-lg transition-colors"
         >
           <FileText className="w-4 h-4" />
-          ব্লগ
+          পরিবর্তনসূচী
         </Link>
         <Link
           href="#"
           className="flex items-center gap-2 px-3 py-2 text-sm text-oa-text-tertiary hover:text-white hover:bg-oa-bg-dark rounded-lg transition-colors"
         >
           <HelpCircle className="w-4 h-4" />
-          সহায়তা
+          সহায়তা
         </Link>
         <Link
           href="#"
